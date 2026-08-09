@@ -193,6 +193,8 @@
 @utility num {
   font-variant-numeric: tabular-nums;
   font-family: var(--font-mono);
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 
 @utility reveal {
