@@ -78,8 +78,8 @@ export function DashboardPreview() {
       <div className="flex items-center justify-between gap-3 border-b border-hairline bg-surface-2/70 px-4 py-3">
         <div className="flex min-w-0 items-center gap-2">
           <span className="h-2 w-2 shrink-0 rounded-full bg-positive" />
-          <span className="truncate text-[12.5px] font-semibold text-ink">Financial Truth</span>
-          <span className="truncate text-[11.5px] text-muted-foreground">
+          <span className="shrink-0 text-[12.5px] font-semibold text-ink">Financial Truth</span>
+          <span className="hidden truncate text-[11.5px] text-muted-foreground sm:inline">
             Acme Group · {t("مارس ٢٠٢٦", "March 2026")}
           </span>
         </div>
