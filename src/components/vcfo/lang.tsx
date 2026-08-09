@@ -108,7 +108,7 @@ export function Section({
       id={id}
       ref={ref}
       data-visible={visible}
-      className={`reveal mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 md:py-28 ${className}`}
+      className={`reveal mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-8 md:py-20 ${className}`}
     >
       {children}
     </section>

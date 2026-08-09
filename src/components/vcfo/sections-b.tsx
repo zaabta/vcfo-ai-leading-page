@@ -191,7 +191,7 @@ function Gauge({ score }: { score: number }) {
         />
       </svg>
       <div className="absolute inset-x-0 bottom-0 text-center">
-        <div className="text-[34px] leading-none font-bold text-ink">
+        <div dir="ltr" className="text-[34px] leading-none font-bold text-ink">
           <CountUp to={score} />
           <span className="text-[16px] text-muted-foreground"> / 100</span>
         </div>
