@@ -1,24 +1,59 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { LangProvider } from "@/components/vcfo/lang";
+import { Navbar } from "@/components/vcfo/nav";
+import { Hero, TrustBar } from "@/components/vcfo/hero";
+import { Problem, Solution, HowItWorks, FinancialTruth } from "@/components/vcfo/sections-a";
+import { Statements, Analytics, HealthScore, MultiCompany } from "@/components/vcfo/sections-b";
+import { DataQuality, ErrorResolution, Security } from "@/components/vcfo/sections-c";
+import { AICfo, AICapabilities, Scenarios, Forecast } from "@/components/vcfo/sections-d";
+import { CTA, FAQ, Footer } from "@/components/vcfo/sections-e";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "VCFO — منصة ذكاء مالي تحوّل بياناتك إلى قرارات";
+const description =
+  "VCFO منصة ذكاء مالي تحوّل بياناتك المحاسبية إلى قوائم مالية موثوقة، مؤشرات واضحة، وتحليلات تساعدك على اتخاذ القرار بثقة.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <LangProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main>
+          <Hero />
+          <TrustBar />
+          <Problem />
+          <Solution />
+          <HowItWorks />
+          <FinancialTruth />
+          <Statements />
+          <Analytics />
+          <HealthScore />
+          <MultiCompany />
+          <DataQuality />
+          <ErrorResolution />
+          <Security />
+          <AICfo />
+          <AICapabilities />
+          <Scenarios />
+          <Forecast />
+          <CTA />
+          <FAQ />
+        </main>
+        <Footer />
+      </div>
+    </LangProvider>
   );
 }
