@@ -84,6 +84,105 @@ export function Statements() {
   );
 }
 
+export function CashFlow() {
+  const t = useT();
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  const activities = [
+    {
+      t: "التدفقات النقدية من الأنشطة التشغيلية",
+      s: "Operating",
+      d: "اعرف مقدار النقد الناتج عن النشاط الأساسي للشركة.",
+      v: "+ 1,240,000",
+      pos: true,
+    },
+    {
+      t: "التدفقات النقدية من الأنشطة الاستثمارية",
+      s: "Investing",
+      d: "تابع النقد المستخدم أو الناتج عن الاستثمارات وشراء وبيع الأصول.",
+      v: "(480,000)",
+      pos: false,
+    },
+    {
+      t: "التدفقات النقدية من الأنشطة التمويلية",
+      s: "Financing",
+      d: "افهم تأثير القروض، التمويل، رأس المال، والتوزيعات على السيولة.",
+      v: "(210,000)",
+      pos: false,
+    },
+  ];
+  const flows = [
+    { l: "التدفق النقدي التشغيلي", v: "1,240,000" },
+    { l: "التدفق النقدي الاستثماري", v: "(480,000)" },
+    { l: "التدفق النقدي التمويلي", v: "(210,000)" },
+    { l: "صافي التغير في النقد", v: "550,000", strong: true },
+  ];
+
+  return (
+    <Section id="cashflow">
+      <Eyebrow>{t("قائمة التدفقات النقدية", "Cash flow statement")}</Eyebrow>
+      <h2 className="mt-4 max-w-[26ch] text-[28px] leading-[1.35] font-bold text-ink sm:text-[36px]">
+        اعرف من أين يأتي النقد وإلى أين يذهب.
+      </h2>
+      <p className="mt-4 max-w-[64ch] text-[15px] leading-8 text-muted-foreground">
+        لا يكفي أن تعرف أن شركتك تحقق أرباحًا. التدفق النقدي يوضح لك كيف تتحرك السيولة الفعلية داخل
+        الشركة، وما إذا كانت العمليات تحقق نقدًا أم تستهلكه.
+      </p>
+
+      <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline lg:grid-cols-3">
+        {activities.map((a) => (
+          <div key={a.s} className="bg-surface p-6">
+            <div className="num text-[11px] font-semibold tracking-widest text-teal uppercase">
+              {a.s}
+            </div>
+            <h3 className="mt-2 text-[15px] leading-7 font-semibold text-ink">{a.t}</h3>
+            <p className="mt-2 text-[13.5px] leading-7 text-muted-foreground">{a.d}</p>
+            <div
+              className={`num mt-4 text-[18px] font-semibold ${a.pos ? "text-positive" : "text-danger"}`}
+            >
+              {a.v}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_1fr]">
+        <div className="card-soft flex flex-col justify-center p-6 sm:p-8">
+          <div className="text-[13px] font-semibold text-ink">صافي التدفق النقدي</div>
+          <p dir="rtl" className="mt-3 text-[14px] leading-8 text-muted-foreground">
+            النقد الداخل <span className="num">−</span> النقد الخارج = صافي التغير في النقد
+          </p>
+          <p className="mt-5 border-s-2 border-teal ps-4 text-[14px] leading-7 font-semibold text-ink">
+            اربط الأرباح بالسيولة، واعرف ما إذا كانت الشركة تولّد نقدًا فعليًا من نشاطها.
+          </p>
+        </div>
+
+        <div ref={ref} className="card-soft overflow-hidden">
+          <div className="border-b border-hairline bg-surface-2/70 px-4 py-3 text-[13px] font-semibold text-ink">
+            {t("صافي التدفق النقدي", "Net cash flow")}
+          </div>
+          <div className="divide-y divide-hairline">
+            {flows.map((f, i) => (
+              <div
+                key={f.l}
+                className={`flex items-center justify-between gap-4 px-4 py-3.5 text-[13px] transition-all duration-500 ${
+                  f.strong ? "bg-surface-2/50 font-semibold text-ink" : "text-muted-foreground"
+                } ${visible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                style={{ transitionDelay: `${i * 110}ms` }}
+              >
+                <span className="min-w-0 truncate">{f.l}</span>
+                <span className="num shrink-0 text-ink">{f.v}</span>
+              </div>
+            ))}
+          </div>
+          <div className="border-t border-hairline px-4 py-2.5 text-[11.5px] text-muted-foreground">
+            SAR · محسوبة من Financial Truth
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 function Bars() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const data = [42, 55, 48, 63, 58, 72, 68, 81];
