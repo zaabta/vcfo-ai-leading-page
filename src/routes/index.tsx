@@ -12,6 +12,7 @@ import {
 } from "@/components/vcfo/sections-b";
 import { DataQuality, ErrorResolution, Security } from "@/components/vcfo/sections-c";
 import { AICfo, AICapabilities, Scenarios, Forecast } from "@/components/vcfo/sections-d";
+import { Pricing } from "@/components/vcfo/pricing";
 import { CTA, FAQ, Footer } from "@/components/vcfo/sections-e";
 
 const title = "VCFO — منصة ذكاء مالي تحوّل بياناتك إلى قرارات";
@@ -56,6 +57,7 @@ function Index() {
           <AICapabilities />
           <Scenarios />
           <Forecast />
+          <Pricing />
           <CTA />
           <FAQ />
         </main>
