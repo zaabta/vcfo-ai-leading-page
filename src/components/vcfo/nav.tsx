@@ -40,6 +40,7 @@ const links = [
   { href: "#features", ar: "المزايا", en: "Features" },
   { href: "#analytics", ar: "التحليلات", en: "Analytics" },
   { href: "#aicfo", ar: "المستشار المالي", en: "AI CFO" },
+  { href: "#pricing", ar: "الأسعار", en: "Pricing" },
   { href: "#faq", ar: "الأسئلة الشائعة", en: "FAQ" },
 ];
 
