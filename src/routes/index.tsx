@@ -3,7 +3,13 @@ import { LangProvider } from "@/components/vcfo/lang";
 import { Navbar } from "@/components/vcfo/nav";
 import { Hero, TrustBar } from "@/components/vcfo/hero";
 import { Problem, Solution, HowItWorks, FinancialTruth } from "@/components/vcfo/sections-a";
-import { Statements, Analytics, HealthScore, MultiCompany } from "@/components/vcfo/sections-b";
+import {
+  Statements,
+  CashFlow,
+  Analytics,
+  HealthScore,
+  MultiCompany,
+} from "@/components/vcfo/sections-b";
 import { DataQuality, ErrorResolution, Security } from "@/components/vcfo/sections-c";
 import { AICfo, AICapabilities, Scenarios, Forecast } from "@/components/vcfo/sections-d";
 import { CTA, FAQ, Footer } from "@/components/vcfo/sections-e";
@@ -39,6 +45,7 @@ function Index() {
           <HowItWorks />
           <FinancialTruth />
           <Statements />
+          <CashFlow />
           <Analytics />
           <HealthScore />
           <MultiCompany />
