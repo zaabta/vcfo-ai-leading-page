@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import { useLang, useT } from "./lang";
 
 function LangSwitch({ compact = false }: { compact?: boolean }) {
@@ -8,7 +9,7 @@ function LangSwitch({ compact = false }: { compact?: boolean }) {
     <div
       className={`inline-flex items-center rounded-full border border-border bg-surface-2 p-0.5 ${compact ? "text-xs" : "text-[13px]"}`}
     >
-      {(["ar", "en"] as const).map((l) => (
+      {/* {(["ar", "en"] as const).map((l) => (
         <button
           key={l}
           onClick={() => setLang(l)}
@@ -18,7 +19,7 @@ function LangSwitch({ compact = false }: { compact?: boolean }) {
         >
           {l === "ar" ? "العربية" : "English"}
         </button>
-      ))}
+      ))} */}
     </div>
   );
 }
@@ -48,6 +49,7 @@ export function Navbar() {
   const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const getStartedUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.getStarted);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -88,13 +90,9 @@ export function Navbar() {
             <LangSwitch compact={scrolled} />
           </div>
           <a
-            href="#cta"
-            className="hidden rounded-md px-3 py-2 text-[13.5px] font-medium text-muted-foreground transition-colors hover:text-foreground md:inline-flex"
-          >
-            {t("تسجيل الدخول", "Log in")}
-          </a>
-          <a
-            href="#cta"
+            href={getStartedUrl}
+            target="_blank"
+            rel="noreferrer noopener"
             className="hidden rounded-lg bg-ink px-4 py-2 text-[13.5px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px sm:inline-flex"
           >
             {t("ابدأ الآن", "Get started")}
@@ -126,7 +124,9 @@ export function Navbar() {
           <div className="mt-3 flex items-center justify-between gap-3 border-t border-hairline pt-3">
             <LangSwitch compact />
             <a
-              href="#cta"
+              href={getStartedUrl}
+              target="_blank"
+              rel="noreferrer noopener"
               className="rounded-lg bg-ink px-4 py-2 text-[13.5px] font-semibold text-primary-foreground"
             >
               {t("ابدأ الآن", "Get started")}

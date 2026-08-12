@@ -99,14 +99,14 @@ export function Compliance() {
 
         <div className="rounded-2xl border border-hairline bg-ink p-6 text-primary-foreground sm:p-7">
           <div className="text-[11.5px] font-semibold tracking-widest uppercase opacity-60">
-            Access matrix
+            مصفوفة الوصول
           </div>
           <div className="mt-4 divide-y divide-white/10 text-[13px]">
             {[
-              { r: "Owner", s: "كامل الصلاحيات" },
-              { r: "Finance Manager", s: "رفع البيانات والاعتماد" },
-              { r: "Analyst", s: "عرض التحليلات فقط" },
-              { r: "Auditor", s: "قراءة + سجل التدقيق" },
+              { r: "المالك", s: "كامل الصلاحيات" },
+              { r: "المدير المالي", s: "رفع البيانات والاعتماد" },
+              { r: "المحلل", s: "عرض التحليلات فقط" },
+              { r: "المراجع", s: "قراءة + سجل التدقيق" },
             ].map((x) => (
               <div key={x.r} className="flex items-center justify-between gap-4 py-3">
                 <span className="num font-semibold">{x.r}</span>

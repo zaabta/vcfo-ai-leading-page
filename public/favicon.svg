@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="VCFO favicon">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#c8f7ef"/>
+      <stop offset="100%" stop-color="#1f8578"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0b1110"/>
+  <path d="M18 40.5V24.8c0-2.3 1.8-4.1 4.1-4.1h19.8c2.3 0 4.1 1.8 4.1 4.1v15.7h-6.8V29.2H24.8v11.3H18z" fill="url(#g)"/>
+  <path d="M28.5 17.5h7v8.2h-7z" fill="#d9fff7"/>
+  <path d="M26 44.8h12v4.2H26zm-4-9.5h20v4.2H22z" fill="#d9fff7" opacity="0.9"/>
+</svg>

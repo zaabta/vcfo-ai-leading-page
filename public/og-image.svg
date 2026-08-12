@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="VCFO social preview">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0c1716"/>
+      <stop offset="100%" stop-color="#102f2c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#d9fff7"/>
+      <stop offset="100%" stop-color="#1f8578"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="28" fill="url(#bg)"/>
+  <rect x="86" y="84" width="150" height="150" rx="36" fill="#101d1b" stroke="#2d6d63"/>
+  <path d="M122 185V120c0-12 9-21 21-21h92c12 0 21 9 21 21v65h-35V133H157v52h-35z" fill="url(#accent)"/>
+  <path d="M165 94h33v39h-33z" fill="#ebfffb"/>
+  <path d="M150 205h90v18h-90zM130 236h130v18H130z" fill="#ebfffb" opacity="0.9"/>
+  <text x="86" y="364" fill="#f4fffd" font-size="72" font-family="Arial, sans-serif" font-weight="700">VCFO</text>
+  <text x="86" y="445" fill="#bfeae0" font-size="40" font-family="Arial, sans-serif">Financial Truth</text>
+  <text x="86" y="510" fill="#dffaf4" font-size="30" font-family="Arial, sans-serif">Financial Intelligence Platform</text>
+  <rect x="728" y="118" width="386" height="260" rx="24" fill="#0e1d1b" stroke="#2a625b"/>
+  <path d="M778 322L846 256L900 293L957 220L1057 301" fill="none" stroke="#73f3dc" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M776 330C776 250 824 196 887 196C950 196 998 255 1058 255" fill="none" stroke="#d9fff7" stroke-width="6" stroke-dasharray="10 12" opacity="0.75"/>
+  <rect x="796" y="154" width="140" height="64" rx="14" fill="#1d574f"/>
+  <text x="820" y="195" fill="#e7fffb" font-size="28" font-family="Arial, sans-serif">+9.2%</text>
+  <rect x="962" y="180" width="116" height="60" rx="14" fill="#1b403d"/>
+  <text x="986" y="220" fill="#dffaf4" font-size="24" font-family="Arial, sans-serif">ROI</text>
+</svg>

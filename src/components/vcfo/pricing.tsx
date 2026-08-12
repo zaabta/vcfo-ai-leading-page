@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Check, Minus } from "lucide-react";
+import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import { Section, Eyebrow, useT } from "./lang";
 
 type Cycle = "monthly" | "yearly";
@@ -34,7 +35,7 @@ const plans = [
       "قائمة التدفقات النقدية",
       "التحليلات والمقارنات (MoM · YoY)",
       "مؤشر الصحة المالية",
-      "مقارنة الفروع و All Branches",
+      "مقارنة الفروع و جميع الفروع",
       "صلاحيات حسب الدور",
     ],
     cta: "ابدأ التجربة",
@@ -79,6 +80,8 @@ function Cell({ v }: { v: boolean | string }) {
 export function Pricing() {
   const t = useT();
   const [cycle, setCycle] = useState<Cycle>("yearly");
+  const getStartedUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.getStarted);
+  const salesUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.sales);
 
   return (
     <Section id="pricing">
@@ -189,7 +192,9 @@ export function Pricing() {
               </ul>
 
               <a
-                href="#cta"
+                href={p.id === "enterprise" ? salesUrl : getStartedUrl}
+                target="_blank"
+                rel="noreferrer noopener"
                 className={`mt-8 block rounded-lg px-5 py-3 text-center text-[14px] font-semibold transition-transform hover:-translate-y-px ${
                   p.popular
                     ? "bg-primary-foreground text-ink"
@@ -242,7 +247,9 @@ export function Pricing() {
           </p>
         </div>
         <a
-          href="#cta"
+          href={getStartedUrl}
+          target="_blank"
+          rel="noreferrer noopener"
           className="shrink-0 rounded-lg bg-ink px-6 py-3 text-[14px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px"
         >
           {t("ابدأ مجانًا", "Start free")}

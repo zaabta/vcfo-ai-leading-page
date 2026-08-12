@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
+import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import { Section, useT, useLang } from "./lang";
 import { Logo } from "./nav";
 
 export function CTA() {
   const t = useT();
+  const getStartedUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.getStarted);
+  const salesUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.sales);
+
   return (
     <Section id="cta">
       <div className="relative overflow-hidden rounded-3xl border border-hairline bg-ink px-6 py-16 text-center text-primary-foreground sm:px-12 sm:py-20">
@@ -18,13 +22,17 @@ export function CTA() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
-              href="#top"
+              href={getStartedUrl}
+              target="_blank"
+              rel="noreferrer noopener"
               className="rounded-lg bg-primary-foreground px-6 py-3 text-[14px] font-semibold text-ink transition-transform hover:-translate-y-px"
             >
               {t("ابدأ الآن", "Get started")}
             </a>
             <a
-              href="#top"
+              href={salesUrl}
+              target="_blank"
+              rel="noreferrer noopener"
               className="rounded-lg border border-white/25 px-6 py-3 text-[14px] font-semibold transition-colors hover:bg-white/[0.06]"
             >
               {t("تحدث مع فريقنا", "Talk to our team")}
@@ -55,7 +63,7 @@ const faqs = [
   },
   {
     q: "هل يدعم الفروع؟",
-    a: "نعم، يدعم إدارة الفروع وعرض All Branches ومقارنة الفروع ضمن نفس الشركة.",
+    a: "نعم، يدعم إدارة الفروع وعرض جميع الفروع ومقارنة الفروع ضمن نفس الشركة.",
   },
   {
     q: "كيف يتعامل النظام مع الأخطاء في الملفات؟",
@@ -123,7 +131,7 @@ const cols = [
   { title: "المنتج", items: ["Dashboard", "Financial Statements", "Analytics", "AI CFO"] },
   { title: "الشركة", items: ["من نحن", "تواصل معنا"] },
   { title: "الموارد", items: ["Documentation", "Help Center", "Blog"] },
-  { title: "قانوني", items: ["Privacy", "Terms", "Security"] },
+  { title: "قانوني", items: ["Privacy", "Terms"] },
 ];
 
 export function Footer() {

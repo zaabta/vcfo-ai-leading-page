@@ -38,7 +38,7 @@ const pipeline = [
   "تنظيف وتوحيد البيانات",
   "مطابقة الحسابات",
   "التحقق من سلامة البيانات",
-  "Financial Truth",
+  "الحقيقة المالية (Financial Truth)",
   "القوائم المالية",
   "التحليلات والمؤشرات",
   "المستشار المالي الذكي",
@@ -71,7 +71,7 @@ export function Solution() {
         <div ref={ref} className="mt-10 grid gap-3 md:grid-cols-4">
           {pipeline.map((label, i) => {
             const on = i <= step;
-            const truth = label === "Financial Truth";
+            const truth = label === "الحقيقة المالية (Financial Truth)";
             return (
               <div
                 key={label}
