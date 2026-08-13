@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 export type Lang = "ar" | "en";
 
@@ -8,14 +8,24 @@ const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("ar");
+  const [lang, setLangState] = useState<Lang>("ar");
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("vcfo-lang");
+    if (saved === "ar" || saved === "en") setLangState(saved);
+  }, []);
+
+  const setLang = useCallback((next: Lang) => {
+    setLangState(next);
+    window.localStorage.setItem("vcfo-lang", next);
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
 
-  const value = useMemo(() => ({ lang, setLang }), [lang]);
+  const value = useMemo(() => ({ lang, setLang }), [lang, setLang]);
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
 }
 
@@ -37,11 +47,23 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    const revealIfVisible = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+        setVisible(true);
+        return true;
+      }
+      return false;
+    };
+
+    if (revealIfVisible()) return;
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) if (e.isIntersecting) setVisible(true);
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px -4% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();

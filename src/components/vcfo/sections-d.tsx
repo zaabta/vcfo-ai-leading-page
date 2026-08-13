@@ -158,6 +158,26 @@ export function AICapabilities() {
           </div>
         ))}
       </div>
+
+      <div className="mt-6 grid gap-4 lg:grid-cols-3">
+        {recommendations.map((item) => (
+          <div key={item.title} className="card-soft p-5">
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-[18px]" aria-hidden>
+                {iconMap[item.icon]}
+              </span>
+              <span
+                className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${priorityStyles[item.priority]}`}
+              >
+                {priorityLabels[item.priority]}
+              </span>
+            </div>
+            <h3 className="mt-4 text-[15px] font-semibold text-ink">{item.title}</h3>
+            <p className="mt-2 text-[13.5px] leading-7 text-muted-foreground">{item.body}</p>
+            <p className="mt-4 text-[12.5px] font-semibold text-ink/80">{item.impact}</p>
+          </div>
+        ))}
+      </div>
     </Section>
   );
 }

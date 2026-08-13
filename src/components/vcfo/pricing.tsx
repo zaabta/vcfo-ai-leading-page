@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, Minus } from "lucide-react";
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import { trackCtaClick } from "@/lib/analytics";
 import { Section, Eyebrow, useT } from "./lang";
 
 type Cycle = "monthly" | "yearly";
@@ -195,6 +196,13 @@ export function Pricing() {
                 href={p.id === "enterprise" ? salesUrl : getStartedUrl}
                 target="_blank"
                 rel="noreferrer noopener"
+                onClick={() =>
+                  trackCtaClick(
+                    p.id === "enterprise" ? "enterprise_sales" : `plan_${p.id}`,
+                    "pricing",
+                    p.id === "enterprise" ? salesUrl : getStartedUrl,
+                  )
+                }
                 className={`mt-8 block rounded-lg px-5 py-3 text-center text-[14px] font-semibold transition-transform hover:-translate-y-px ${
                   p.popular
                     ? "bg-primary-foreground text-ink"
@@ -250,6 +258,7 @@ export function Pricing() {
           href={getStartedUrl}
           target="_blank"
           rel="noreferrer noopener"
+          onClick={() => trackCtaClick("start_free", "pricing_banner", getStartedUrl)}
           className="shrink-0 rounded-lg bg-ink px-6 py-3 text-[14px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px"
         >
           {t("ابدأ مجانًا", "Start free")}

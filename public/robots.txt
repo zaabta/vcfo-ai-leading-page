@@ -1,40 +1,5 @@
-User-agent: Googlebot
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-Host: vcfo-ai.com
-
-User-agent: Bingbot
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
-User-agent: Slurp
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
-User-agent: DuckDuckBot
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
-User-agent: GPTBot
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
-User-agent: ClaudeBot
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
-User-agent: Google-Extended
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
-User-agent: Twitterbot
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
-User-agent: facebookexternalhit
-Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
-
 User-agent: *
 Allow: /
-Sitemap: https://vcfo-ai.com/sitemap.xml
+
+Sitemap: https://www.vcfo-ai.com/sitemap.xml
+Host: www.vcfo-ai.com

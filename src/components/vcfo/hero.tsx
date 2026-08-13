@@ -1,5 +1,6 @@
-import { ArrowLeft, Play, MessageCircle, ShieldCheck, GitBranch, CheckCircle2, Lock, ScrollText } from "lucide-react";
+import { ArrowLeft, Play, ShieldCheck, GitBranch, CheckCircle2, Lock, ScrollText } from "lucide-react";
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import { trackCtaClick } from "@/lib/analytics";
 import { CountUp, useT, useReveal } from "./lang";
 
 function Metric({
@@ -151,7 +152,6 @@ export function Hero() {
   const t = useT();
   const { ref, visible } = useReveal<HTMLDivElement>();
   const getStartedUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.getStarted);
-  const chatUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.sales);
 
   return (
     <div id="top" className="relative overflow-hidden">
@@ -187,15 +187,15 @@ export function Hero() {
               href={getStartedUrl}
               target="_blank"
               rel="noreferrer noopener"
+              onClick={() => trackCtaClick("start_free", "hero", getStartedUrl)}
               className="inline-flex items-center gap-2 rounded-lg bg-ink px-5 py-3 text-[14px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px"
             >
               {t("ابدأ الآن مجانًا", "Start for free")}
               <ArrowLeft className="h-4 w-4 rtl:rotate-0 ltr:rotate-180" />
             </a>
             <a
-              href={getStartedUrl}
-              target="_blank"
-              rel="noreferrer noopener"
+              href="#how"
+              onClick={() => trackCtaClick("see_how_it_works", "hero", "#how")}
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[14px] font-semibold text-ink transition-colors hover:bg-surface-2"
             >
               <Play className="h-3.5 w-3.5" />

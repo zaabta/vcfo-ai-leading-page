@@ -10,7 +10,7 @@ import {
   HealthScore,
   MultiCompany,
 } from "@/components/vcfo/sections-b";
-import { DataQuality, ErrorResolution, Security } from "@/components/vcfo/sections-c";
+import { DataQuality, ErrorResolution } from "@/components/vcfo/sections-c";
 import { AICfo, AICapabilities, Scenarios, Forecast } from "@/components/vcfo/sections-d";
 import { Pricing } from "@/components/vcfo/pricing";
 import { Compliance, Testimonials } from "@/components/vcfo/trust";
@@ -21,7 +21,7 @@ const description =
   "VCFO منصة ذكاء مالي للشركات تساعدك على تنظيف البيانات المالية، إنشاء Financial Truth، وتحويل الأرقام إلى مؤشرات وتحليلات واضحة لاتخاذ قرارات أسرع وأذكى.";
 const keywords =
   "VCFO, ذكاء مالي, Financial Intelligence, Financial Truth, تحليل مالي, مؤشرات مالية, قوائم مالية, إدارة الشركات, CFO dashboard, business intelligence, financial reporting, forecasting, data validation";
-const canonicalUrl = "https://vcfo-ai.com";
+const canonicalUrl = "https://www.vcfo-ai.com";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -77,6 +77,21 @@ const softwareSchema = {
   ],
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "VCFO",
+  url: canonicalUrl,
+  logo: `${canonicalUrl}/favicon.svg`,
+  description,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    availableLanguage: ["ar", "en"],
+    url: "https://wa.me/905354569184",
+  },
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -94,20 +109,21 @@ export const Route = createFileRoute("/")({
       { property: "og:site_name", content: "VCFO" },
       { property: "og:url", content: canonicalUrl },
       { property: "og:locale", content: "ar_SA" },
-      { property: "og:image", content: "https://vcfo-ai.com/og-image.svg" },
+      { property: "og:image", content: "https://www.vcfo-ai.com/og-image.svg" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: "https://vcfo-ai.com/og-image.svg" },
+      { name: "twitter:image", content: "https://www.vcfo-ai.com/og-image.svg" },
       { name: "twitter:site", content: "@VCFO" },
     ],
     links: [
       { rel: "canonical", href: canonicalUrl },
-      { rel: "alternate", href: canonicalUrl, hreflang: "ar" },
-      { rel: "alternate", href: canonicalUrl, hreflang: "en" },
+      { rel: "alternate", href: canonicalUrl, hrefLang: "ar" },
+      { rel: "alternate", href: canonicalUrl, hrefLang: "en" },
       { rel: "manifest", href: "/site.webmanifest" },
     ],
     script: [
+      { type: "application/ld+json", children: JSON.stringify(organizationSchema) },
       { type: "application/ld+json", children: JSON.stringify(softwareSchema) },
       { type: "application/ld+json", children: JSON.stringify(faqSchema) },
     ],
@@ -126,7 +142,7 @@ function Index() {
           <Problem />
           <Solution />
           <HowItWorks />
-          {/* <FinancialTruth /> */}
+          <FinancialTruth />
           <Statements />
           <CashFlow />
           <Analytics />

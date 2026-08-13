@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import { trackCtaClick } from "@/lib/analytics";
 import { useLang, useT } from "./lang";
 
 function LangSwitch({ compact = false }: { compact?: boolean }) {
@@ -9,9 +10,10 @@ function LangSwitch({ compact = false }: { compact?: boolean }) {
     <div
       className={`inline-flex items-center rounded-full border border-border bg-surface-2 p-0.5 ${compact ? "text-xs" : "text-[13px]"}`}
     >
-      {/* {(["ar", "en"] as const).map((l) => (
+      {(["ar", "en"] as const).map((l) => (
         <button
           key={l}
+          type="button"
           onClick={() => setLang(l)}
           className={`rounded-full px-3 py-1 font-medium transition-colors ${
             lang === l ? "bg-ink text-primary-foreground" : "text-muted-foreground hover:text-foreground"
@@ -19,14 +21,14 @@ function LangSwitch({ compact = false }: { compact?: boolean }) {
         >
           {l === "ar" ? "العربية" : "English"}
         </button>
-      ))} */}
+      ))}
     </div>
   );
 }
 
 export function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-2.5">
+    <a href="/" className="flex items-center gap-2.5">
       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-ink">
         <span className="block h-3 w-3 rounded-[3px] border-2 border-teal-soft border-b-teal border-s-teal" />
       </span>
@@ -36,13 +38,13 @@ export function Logo() {
 }
 
 const links = [
-  { href: "#top", ar: "الرئيسية", en: "Home" },
-  { href: "#how", ar: "كيف يعمل", en: "How it works" },
-  { href: "#features", ar: "المزايا", en: "Features" },
-  { href: "#analytics", ar: "التحليلات", en: "Analytics" },
-  { href: "#aicfo", ar: "المستشار المالي", en: "AI CFO" },
-  { href: "#pricing", ar: "الأسعار", en: "Pricing" },
-  { href: "#faq", ar: "الأسئلة الشائعة", en: "FAQ" },
+  { href: "/#top", ar: "الرئيسية", en: "Home" },
+  { href: "/#how", ar: "كيف يعمل", en: "How it works" },
+  { href: "/#features", ar: "المزايا", en: "Features" },
+  { href: "/#analytics", ar: "التحليلات", en: "Analytics" },
+  { href: "/#aicfo", ar: "المستشار المالي", en: "AI CFO" },
+  { href: "/#pricing", ar: "الأسعار", en: "Pricing" },
+  { href: "/#faq", ar: "الأسئلة الشائعة", en: "FAQ" },
 ];
 
 export function Navbar() {
@@ -93,6 +95,7 @@ export function Navbar() {
             href={getStartedUrl}
             target="_blank"
             rel="noreferrer noopener"
+            onClick={() => trackCtaClick("get_started", "navbar", getStartedUrl)}
             className="hidden rounded-lg bg-ink px-4 py-2 text-[13.5px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px sm:inline-flex"
           >
             {t("ابدأ الآن", "Get started")}

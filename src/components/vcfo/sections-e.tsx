@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import { trackCtaClick } from "@/lib/analytics";
 import { Section, useT, useLang } from "./lang";
 import { Logo } from "./nav";
 
@@ -25,6 +26,7 @@ export function CTA() {
               href={getStartedUrl}
               target="_blank"
               rel="noreferrer noopener"
+              onClick={() => trackCtaClick("get_started", "cta", getStartedUrl)}
               className="rounded-lg bg-primary-foreground px-6 py-3 text-[14px] font-semibold text-ink transition-transform hover:-translate-y-px"
             >
               {t("ابدأ الآن", "Get started")}
@@ -33,6 +35,7 @@ export function CTA() {
               href={salesUrl}
               target="_blank"
               rel="noreferrer noopener"
+              onClick={() => trackCtaClick("talk_to_team", "cta", salesUrl)}
               className="rounded-lg border border-white/25 px-6 py-3 text-[14px] font-semibold transition-colors hover:bg-white/[0.06]"
             >
               {t("تحدث مع فريقنا", "Talk to our team")}
@@ -128,10 +131,35 @@ export function FAQ() {
 }
 
 const cols = [
-  { title: "المنتج", items: ["Dashboard", "Financial Statements", "Analytics", "AI CFO"] },
-  { title: "الشركة", items: ["من نحن", "تواصل معنا"] },
-  { title: "الموارد", items: ["Documentation", "Help Center", "Blog"] },
-  { title: "قانوني", items: ["Privacy", "Terms"] },
+  {
+    title: "المنتج",
+    enTitle: "Product",
+    items: [
+      { ar: "كيف يعمل", en: "How it works", href: "/#how" },
+      { ar: "القوائم المالية", en: "Statements", href: "/#features" },
+      { ar: "التحليلات", en: "Analytics", href: "/#analytics" },
+      { ar: "المستشار المالي", en: "AI CFO", href: "/#aicfo" },
+      { ar: "الأسعار", en: "Pricing", href: "/#pricing" },
+    ],
+  },
+  {
+    title: "الشركة",
+    enTitle: "Company",
+    items: [
+      { ar: "من نحن", en: "About", href: "/about" },
+      { ar: "تواصل معنا", en: "Contact", href: "/#cta" },
+      { ar: "الأسئلة الشائعة", en: "FAQ", href: "/#faq" },
+    ],
+  },
+  {
+    title: "قانوني",
+    enTitle: "Legal",
+    items: [
+      { ar: "الخصوصية", en: "Privacy", href: "/privacy" },
+      { ar: "الشروط", en: "Terms", href: "/terms" },
+      { ar: "الأمان", en: "Security", href: "/#compliance" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -147,18 +175,20 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {cols.map((c) => (
               <div key={c.title}>
-                <h3 className="text-[13px] font-semibold text-ink">{c.title}</h3>
+                <h3 className="text-[13px] font-semibold text-ink">
+                  {lang === "en" ? c.enTitle : c.title}
+                </h3>
                 <ul className="mt-3 space-y-2.5">
                   {c.items.map((i) => (
-                    <li key={i}>
+                    <li key={i.href}>
                       <a
-                        href="#top"
+                        href={i.href}
                         className="text-[13px] text-muted-foreground transition-colors hover:text-ink"
                       >
-                        {i}
+                        {lang === "en" ? i.en : i.ar}
                       </a>
                     </li>
                   ))}
