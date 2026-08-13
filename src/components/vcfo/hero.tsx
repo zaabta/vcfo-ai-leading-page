@@ -121,8 +121,12 @@ export function DashboardPreview() {
               Insight
             </div>
             <p className="text-[12.5px] leading-6 text-ink">
-              ارتفعت المصروفات التشغيلية بنسبة <span className="num font-semibold">12%</span> مقارنة
-              بالفترة السابقة.
+              {t(
+                "ارتفعت المصروفات التشغيلية بنسبة",
+                "Operating expenses rose by",
+              )}{" "}
+              <span className="num font-semibold">12%</span>{" "}
+              {t("مقارنة بالفترة السابقة.", "versus the previous period.")}
             </p>
           </div>
           <div className="rounded-xl border border-positive/30 bg-positive/8 p-3">
@@ -130,7 +134,8 @@ export function DashboardPreview() {
               Insight
             </div>
             <p className="text-[12.5px] leading-6 text-ink">
-              هامش الربح الإجمالي تحسن من <span className="num font-semibold">31%</span> إلى{" "}
+              {t("هامش الربح الإجمالي تحسن من", "Gross margin improved from")}{" "}
+              <span className="num font-semibold">31%</span> {t("إلى", "to")}{" "}
               <span className="num font-semibold">36%</span>.
             </p>
           </div>
@@ -204,9 +209,10 @@ export function Hero() {
           </div>
 
           <p className="mt-5 text-[12.5px] leading-6 text-muted-foreground">
-            بياناتك المالية <span className="text-hairline">←</span> حقيقة مالية موثوقة{" "}
-            <span className="text-hairline">←</span> تحليل <span className="text-hairline">←</span>{" "}
-            قرارات أفضل
+            {t("بياناتك المالية", "Your financial data")} <span className="text-hairline">←</span>{" "}
+            {t("حقيقة مالية موثوقة", "trusted financial truth")}{" "}
+            <span className="text-hairline">←</span> {t("تحليل", "analysis")}{" "}
+            <span className="text-hairline">←</span> {t("قرارات أفضل", "better decisions")}
           </p>
         </div>
 

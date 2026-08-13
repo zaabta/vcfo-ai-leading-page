@@ -42,8 +42,8 @@ const links = [
   { href: "/#how", ar: "كيف يعمل", en: "How it works" },
   { href: "/#features", ar: "المزايا", en: "Features" },
   { href: "/#analytics", ar: "التحليلات", en: "Analytics" },
-  { href: "/#aicfo", ar: "المستشار المالي", en: "AI CFO" },
   { href: "/#pricing", ar: "الأسعار", en: "Pricing" },
+  { href: "/blog", ar: "المدونة", en: "Blog" },
   { href: "/#faq", ar: "الأسئلة الشائعة", en: "FAQ" },
 ];
 

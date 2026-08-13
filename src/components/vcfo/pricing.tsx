@@ -2,36 +2,46 @@ import { useState } from "react";
 import { Check, Minus } from "lucide-react";
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import { trackCtaClick } from "@/lib/analytics";
-import { Section, Eyebrow, useT } from "./lang";
+import { Section, Eyebrow, useT, useLang } from "./lang";
 
 type Cycle = "monthly" | "yearly";
 
 const plans = [
   {
     id: "starter",
-    name: "الأساسية",
-    en: "Starter",
-    desc: "لشركة واحدة تبدأ في تنظيم بياناتها المالية.",
+    nameAr: "الأساسية",
+    nameEn: "Starter",
+    descAr: "لشركة واحدة تبدأ في تنظيم بياناتها المالية.",
+    descEn: "For one company starting to organize its financial data.",
     monthly: 349,
     yearly: 279,
-    features: [
+    featuresAr: [
       "شركة واحدة · فرع واحد",
       "رفع Trial Balance (Excel / CSV)",
       "قائمة الدخل والميزانية العمومية",
       "المؤشرات المالية الأساسية",
       "التحقق من سلامة البيانات",
     ],
-    cta: "ابدأ الآن",
+    featuresEn: [
+      "One company · one branch",
+      "Upload Trial Balance (Excel / CSV)",
+      "Income statement and balance sheet",
+      "Core financial metrics",
+      "Data validation",
+    ],
+    ctaAr: "ابدأ الآن",
+    ctaEn: "Get started",
   },
   {
     id: "growth",
-    name: "النمو",
-    en: "Growth",
-    desc: "للشركات متعددة الفروع التي تحتاج تحليلات أعمق.",
+    nameAr: "النمو",
+    nameEn: "Growth",
+    descAr: "للشركات متعددة الفروع التي تحتاج تحليلات أعمق.",
+    descEn: "For multi-branch companies that need deeper analysis.",
     monthly: 899,
     yearly: 719,
     popular: true,
-    features: [
+    featuresAr: [
       "حتى 3 شركات · فروع غير محدودة",
       "قائمة التدفقات النقدية",
       "التحليلات والمقارنات (MoM · YoY)",
@@ -39,38 +49,59 @@ const plans = [
       "مقارنة الفروع و جميع الفروع",
       "صلاحيات حسب الدور",
     ],
-    cta: "ابدأ التجربة",
+    featuresEn: [
+      "Up to 3 companies · unlimited branches",
+      "Cash flow statement",
+      "Analytics and comparisons (MoM · YoY)",
+      "Financial health score",
+      "Branch and all-branch comparison",
+      "Role-based access",
+    ],
+    ctaAr: "ابدأ التجربة",
+    ctaEn: "Start trial",
   },
   {
     id: "enterprise",
-    name: "المؤسسات",
-    en: "Enterprise",
-    desc: "لمجموعات الشركات التي تحتاج حوكمة ودعمًا مخصصًا.",
+    nameAr: "المؤسسات",
+    nameEn: "Enterprise",
+    descAr: "لمجموعات الشركات التي تحتاج حوكمة ودعمًا مخصصًا.",
+    descEn: "For groups that need governance and dedicated support.",
     monthly: null,
     yearly: null,
-    features: [
+    featuresAr: [
       "شركات وفروع غير محدودة",
       "عزل كامل للبيانات وسجل تدقيق",
       "التوقعات وتحليل السيناريوهات",
       "المستشار المالي الذكي (قريبًا)",
       "دعم مخصص و SLA",
     ],
-    cta: "تواصل مع المبيعات",
+    featuresEn: [
+      "Unlimited companies and branches",
+      "Full isolation and audit log",
+      "Forecasts and scenario analysis",
+      "AI financial advisor (soon)",
+      "Dedicated support and SLA",
+    ],
+    ctaAr: "تواصل مع المبيعات",
+    ctaEn: "Talk to sales",
   },
 ];
 
-const matrix: { label: string; values: (boolean | string)[] }[] = [
-  { label: "عدد الشركات", values: ["1", "3", "غير محدود"] },
-  { label: "عدد الفروع", values: ["1", "غير محدود", "غير محدود"] },
-  { label: "القوائم المالية", values: [true, true, true] },
-  { label: "قائمة التدفقات النقدية", values: [false, true, true] },
-  { label: "التحليلات والمقارنات", values: [false, true, true] },
-  { label: "مؤشر الصحة المالية", values: [false, true, true] },
-  { label: "التوقعات والسيناريوهات", values: [false, false, true] },
-  { label: "سجل التدقيق والصلاحيات", values: [false, true, true] },
-  { label: "المستشار المالي الذكي", values: [false, false, "قريبًا"] },
-  { label: "الدعم", values: ["بريد إلكتروني", "أولوية", "مخصص + SLA"] },
-];
+function getMatrix(t: (ar: string, en?: string) => string) {
+  const unlimited = t("غير محدود", "Unlimited");
+  return [
+    { label: t("عدد الشركات", "Companies"), values: ["1", "3", unlimited] },
+    { label: t("عدد الفروع", "Branches"), values: ["1", unlimited, unlimited] },
+    { label: t("القوائم المالية", "Financial statements"), values: [true, true, true] },
+    { label: t("قائمة التدفقات النقدية", "Cash flow statement"), values: [false, true, true] },
+    { label: t("التحليلات والمقارنات", "Analytics and comparisons"), values: [false, true, true] },
+    { label: t("مؤشر الصحة المالية", "Health score"), values: [false, true, true] },
+    { label: t("التوقعات والسيناريوهات", "Forecasts and scenarios"), values: [false, false, true] },
+    { label: t("سجل التدقيق والصلاحيات", "Audit log and permissions"), values: [false, true, true] },
+    { label: t("المستشار المالي الذكي", "AI financial advisor"), values: [false, false, t("قريبًا", "Soon")] },
+    { label: t("الدعم", "Support"), values: [t("بريد إلكتروني", "Email"), t("أولوية", "Priority"), t("مخصص + SLA", "Dedicated + SLA")] },
+  ] as { label: string; values: (boolean | string)[] }[];
+}
 
 function Cell({ v }: { v: boolean | string }) {
   if (v === true) return <Check className="mx-auto h-4 w-4 text-teal" />;
@@ -80,9 +111,11 @@ function Cell({ v }: { v: boolean | string }) {
 
 export function Pricing() {
   const t = useT();
+  const { lang } = useLang();
   const [cycle, setCycle] = useState<Cycle>("yearly");
   const getStartedUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.getStarted);
   const salesUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.sales);
+  const matrix = getMatrix(t);
 
   return (
     <Section id="pricing">
@@ -90,18 +123,21 @@ export function Pricing() {
       <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
         <div>
           <h2 className="max-w-[24ch] text-[28px] leading-[1.35] font-bold text-ink sm:text-[36px]">
-            خطة واضحة لكل مرحلة من مراحل شركتك
+            {t("خطة واضحة لكل مرحلة من مراحل شركتك", "A clear plan for every stage of your company")}
           </h2>
           <p className="mt-4 max-w-[58ch] text-[15px] leading-8 text-muted-foreground">
-            جميع الخطط تشمل رفع البيانات، التحقق من سلامتها، وبناء Financial Truth. بدون رسوم إعداد.
+            {t(
+              "جميع الخطط تشمل رفع البيانات، التحقق من سلامتها، وبناء Financial Truth. بدون رسوم إعداد.",
+              "Every plan includes data upload, validation, and Financial Truth. No setup fees.",
+            )}
           </p>
         </div>
 
         <div className="inline-flex items-center rounded-full border border-hairline bg-surface-2 p-1 text-[13px]">
           {(
             [
-              { k: "monthly", l: "شهري" },
-              { k: "yearly", l: "سنوي · وفّر 20%" },
+              { k: "monthly", l: t("شهري", "Monthly") },
+              { k: "yearly", l: t("سنوي · وفّر 20%", "Yearly · save 20%") },
             ] as const
           ).map((o) => (
             <button
@@ -133,29 +169,31 @@ export function Pricing() {
             >
               {p.popular && (
                 <span className="absolute -top-3 inline-flex rounded-full bg-teal px-3 py-1 text-[11px] font-semibold text-ink">
-                  الأكثر اختيارًا
+                  {t("الأكثر اختيارًا", "Most popular")}
                 </span>
               )}
               <div className="flex items-baseline justify-between gap-3">
-                <h3 className={`text-[17px] font-bold ${p.popular ? "" : "text-ink"}`}>{p.name}</h3>
+                <h3 className={`text-[17px] font-bold ${p.popular ? "" : "text-ink"}`}>
+                  {t(p.nameAr, p.nameEn)}
+                </h3>
                 <span
                   className={`num text-[11px] font-semibold tracking-widest uppercase ${
                     p.popular ? "text-teal-soft" : "text-teal"
                   }`}
                 >
-                  {p.en}
+                  {p.nameEn}
                 </span>
               </div>
               <p
                 className={`mt-2 text-[13.5px] leading-7 ${p.popular ? "opacity-70" : "text-muted-foreground"}`}
               >
-                {p.desc}
+                {t(p.descAr, p.descEn)}
               </p>
 
               <div className="mt-6 flex items-end gap-2">
                 {price === null ? (
                   <span className={`text-[28px] font-bold ${p.popular ? "" : "text-ink"}`}>
-                    حسب الطلب
+                    {t("حسب الطلب", "Custom")}
                   </span>
                 ) : (
                   <>
@@ -167,7 +205,7 @@ export function Pricing() {
                     <span
                       className={`text-[13px] ${p.popular ? "opacity-65" : "text-muted-foreground"}`}
                     >
-                      <span className="num">SAR</span> / شهريًا
+                      <span className="num">SAR</span> / {t("شهريًا", "month")}
                     </span>
                   </>
                 )}
@@ -176,13 +214,13 @@ export function Pricing() {
                 <p
                   className={`mt-1.5 text-[12px] ${p.popular ? "opacity-60" : "text-muted-foreground"}`}
                 >
-                  تُدفع سنويًا
+                  {t("تُدفع سنويًا", "Billed annually")}
                 </p>
               )}
 
               <ul className="mt-6 grid gap-3 border-t pt-6 text-[13.5px] leading-6"
                   style={{ borderColor: p.popular ? "rgba(255,255,255,0.12)" : "var(--hairline)" }}>
-                {p.features.map((f) => (
+                {(lang === "en" ? p.featuresEn : p.featuresAr).map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
                     <Check
                       className={`mt-0.5 h-4 w-4 shrink-0 ${p.popular ? "text-teal-soft" : "text-teal"}`}
@@ -209,7 +247,7 @@ export function Pricing() {
                     : "border border-ink bg-surface text-ink hover:bg-surface-2"
                 }`}
               >
-                {p.cta}
+                {t(p.ctaAr, p.ctaEn)}
               </a>
             </div>
           );
@@ -226,7 +264,7 @@ export function Pricing() {
                 </th>
                 {plans.map((p) => (
                   <th key={p.id} className="p-4 text-center text-[13px] font-semibold text-ink">
-                    {p.name}
+                    {t(p.nameAr, p.nameEn)}
                   </th>
                 ))}
               </tr>
@@ -249,9 +287,14 @@ export function Pricing() {
 
       <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border border-hairline bg-surface-2/60 p-6 sm:flex-row sm:items-center sm:p-8">
         <div>
-          <h3 className="text-[16px] font-semibold text-ink">لست متأكدًا أي خطة تناسبك؟</h3>
+          <h3 className="text-[16px] font-semibold text-ink">
+            {t("لست متأكدًا أي خطة تناسبك؟", "Not sure which plan fits?")}
+          </h3>
           <p className="mt-1.5 text-[13.5px] leading-7 text-muted-foreground">
-            ارفع ملفًا واحدًا وسنريك الصورة المالية لشركتك قبل أن تدفع أي شيء.
+            {t(
+              "ارفع ملفًا واحدًا وسنريك الصورة المالية لشركتك قبل أن تدفع أي شيء.",
+              "Upload one file and we will show you your company's financial picture before you pay anything.",
+            )}
           </p>
         </div>
         <a

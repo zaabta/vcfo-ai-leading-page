@@ -2,10 +2,34 @@ import { useEffect, useState } from "react";
 import { Section, Eyebrow, useT, useReveal } from "./lang";
 
 const problems = [
-  { n: "01", ar: "ملفات Excel كثيرة", d: "بيانات موزعة بين ملفات وتقارير مختلفة." },
-  { n: "02", ar: "حسابات غير متطابقة", d: "اختلاف أسماء الحسابات والأكواد بين الأنظمة والفروع." },
-  { n: "03", ar: "تحليل يدوي", d: "استخراج المؤشرات والمقارنات يحتاج وقتًا وجهدًا." },
-  { n: "04", ar: "صعوبة معرفة ما يحدث فعليًا", d: "الأرقام موجودة، لكن القصة وراء الأرقام ليست واضحة." },
+  {
+    n: "01",
+    ar: "ملفات Excel كثيرة",
+    en: "Too many Excel files",
+    dAr: "بيانات موزعة بين ملفات وتقارير مختلفة.",
+    dEn: "Data is scattered across files and different reports.",
+  },
+  {
+    n: "02",
+    ar: "حسابات غير متطابقة",
+    en: "Mismatched accounts",
+    dAr: "اختلاف أسماء الحسابات والأكواد بين الأنظمة والفروع.",
+    dEn: "Account names and codes differ across systems and branches.",
+  },
+  {
+    n: "03",
+    ar: "تحليل يدوي",
+    en: "Manual analysis",
+    dAr: "استخراج المؤشرات والمقارنات يحتاج وقتًا وجهدًا.",
+    dEn: "Extracting metrics and comparisons takes time and effort.",
+  },
+  {
+    n: "04",
+    ar: "صعوبة معرفة ما يحدث فعليًا",
+    en: "Hard to see what is really happening",
+    dAr: "الأرقام موجودة، لكن القصة وراء الأرقام ليست واضحة.",
+    dEn: "The numbers exist, but the story behind them is not clear.",
+  },
 ];
 
 export function Problem() {
@@ -14,18 +38,21 @@ export function Problem() {
     <Section>
       <Eyebrow>{t("المشكلة", "The problem")}</Eyebrow>
       <h2 className="mt-4 max-w-[20ch] text-[28px] leading-[1.35] font-bold text-ink sm:text-[36px]">
-        المشكلة ليست في نقص البيانات
+        {t("المشكلة ليست في نقص البيانات", "The problem is not a lack of data")}
       </h2>
       <p className="mt-4 max-w-[62ch] text-[15px] leading-8 text-muted-foreground">
-        المشكلة أن البيانات المالية غالبًا تكون موزعة، غير منظمة، وصعبة التحويل إلى قرار واضح.
+        {t(
+          "المشكلة أن البيانات المالية غالبًا تكون موزعة، غير منظمة، وصعبة التحويل إلى قرار واضح.",
+          "The problem is that financial data is usually scattered, unstructured, and hard to turn into a clear decision.",
+        )}
       </p>
 
       <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-4">
         {problems.map((p) => (
           <div key={p.n} className="group bg-surface p-6 transition-colors hover:bg-surface-2">
             <span className="num text-[12px] font-semibold text-teal">{p.n}</span>
-            <h3 className="mt-3 text-[15.5px] font-semibold text-ink">{p.ar}</h3>
-            <p className="mt-2 text-[13.5px] leading-7 text-muted-foreground">{p.d}</p>
+            <h3 className="mt-3 text-[15.5px] font-semibold text-ink">{t(p.ar, p.en)}</h3>
+            <p className="mt-2 text-[13.5px] leading-7 text-muted-foreground">{t(p.dAr, p.dEn)}</p>
           </div>
         ))}
       </div>
@@ -34,14 +61,14 @@ export function Problem() {
 }
 
 const pipeline = [
-  "رفع البيانات",
-  "تنظيف وتوحيد البيانات",
-  "مطابقة الحسابات",
-  "التحقق من سلامة البيانات",
-  "الحقيقة المالية (Financial Truth)",
-  "القوائم المالية",
-  "التحليلات والمؤشرات",
-  "المستشار المالي الذكي",
+  { ar: "رفع البيانات", en: "Upload data" },
+  { ar: "تنظيف وتوحيد البيانات", en: "Clean and unify data" },
+  { ar: "مطابقة الحسابات", en: "Map accounts" },
+  { ar: "التحقق من سلامة البيانات", en: "Validate data integrity" },
+  { ar: "الحقيقة المالية (Financial Truth)", en: "Financial Truth" },
+  { ar: "القوائم المالية", en: "Financial statements" },
+  { ar: "التحليلات والمؤشرات", en: "Analytics and KPIs" },
+  { ar: "المستشار المالي الذكي", en: "AI financial advisor" },
 ];
 
 export function Solution() {
@@ -65,16 +92,16 @@ export function Solution() {
       <div className="rounded-3xl border border-hairline bg-surface-2/60 p-6 sm:p-10">
         <Eyebrow>{t("الحل", "The solution")}</Eyebrow>
         <h2 className="mt-4 max-w-[26ch] text-[28px] leading-[1.35] font-bold text-ink sm:text-[36px]">
-          VCFO يبني طبقة ذكاء فوق بياناتك المالية
+          {t("VCFO يبني طبقة ذكاء فوق بياناتك المالية", "VCFO builds an intelligence layer on your financial data")}
         </h2>
 
         <div ref={ref} className="mt-10 grid gap-3 md:grid-cols-4">
-          {pipeline.map((label, i) => {
+          {pipeline.map((item, i) => {
             const on = i <= step;
-            const truth = label === "الحقيقة المالية (Financial Truth)";
+            const truth = i === 4;
             return (
               <div
-                key={label}
+                key={item.en}
                 className={`relative rounded-xl border p-4 transition-all duration-500 ${
                   on
                     ? truth
@@ -90,10 +117,8 @@ export function Solution() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <div
-                  className={`mt-2 text-[13.5px] font-semibold ${truth && on ? "" : "text-ink"}`}
-                >
-                  {label}
+                <div className={`mt-2 text-[13.5px] font-semibold ${truth && on ? "" : "text-ink"}`}>
+                  {t(item.ar, item.en)}
                 </div>
               </div>
             );
@@ -110,14 +135,17 @@ export function HowItWorks() {
     <Section id="how">
       <Eyebrow>{t("كيف يعمل", "How it works")}</Eyebrow>
       <h2 className="mt-4 max-w-[28ch] text-[28px] leading-[1.35] font-bold text-ink sm:text-[36px]">
-        من ملف Excel إلى صورة مالية واضحة في خطوات بسيطة
+        {t(
+          "من ملف Excel إلى صورة مالية واضحة في خطوات بسيطة",
+          "From an Excel file to a clear financial picture in simple steps",
+        )}
       </h2>
 
       <div className="mt-12 space-y-px overflow-hidden rounded-2xl border border-hairline bg-hairline">
         <Step
           n="01"
-          title="ارفع بياناتك"
-          body="ارفع Trial Balance أو Chart of Accounts."
+          title={t("ارفع بياناتك", "Upload your data")}
+          body={t("ارفع Trial Balance أو Chart of Accounts.", "Upload a Trial Balance or Chart of Accounts.")}
           aside={
             <div className="flex gap-2">
               {["Excel", "CSV"].map((f) => (
@@ -133,17 +161,23 @@ export function HowItWorks() {
         />
         <Step
           n="02"
-          title="VCFO ينظّم البيانات"
-          body="يقوم النظام بتنظيف وتوحيد البيانات تلقائيًا."
+          title={t("VCFO ينظّم البيانات", "VCFO organizes the data")}
+          body={t(
+            "يقوم النظام بتنظيف وتوحيد البيانات تلقائيًا.",
+            "The system cleans and unifies the data automatically.",
+          )}
         />
         <Step
           n="03"
-          title="مطابقة الحسابات"
-          body="يتم ربط حسابات شركتك بالتصنيف المالي الصحيح."
+          title={t("مطابقة الحسابات", "Account mapping")}
+          body={t(
+            "يتم ربط حسابات شركتك بالتصنيف المالي الصحيح.",
+            "Your company accounts are mapped to the correct financial classification.",
+          )}
           aside={
             <div className="flex flex-wrap items-center gap-3 rounded-xl border border-hairline bg-surface-2 p-3 text-[12.5px]">
               <span className="num font-semibold text-ink">1200</span>
-              <span className="text-ink">النقدية</span>
+              <span className="text-ink">{t("النقدية", "Cash")}</span>
               <span className="text-hairline">←</span>
               <span className="num rounded-md bg-surface px-2 py-1 font-semibold text-teal">
                 Cash &amp; Cash Equivalents
@@ -153,25 +187,34 @@ export function HowItWorks() {
         />
         <Step
           n="04"
-          title="التحقق"
-          body="يتحقق النظام من:"
+          title={t("التحقق", "Validation")}
+          body={t("يتحقق النظام من:", "The system checks:")}
           list={[
-            "توازن المدين والدائن",
-            "الحسابات المفقودة",
-            "الحسابات غير المطابقة",
-            "البيانات المكررة",
-            "صحة الفترة المالية",
-            "سلامة العلاقة بين الأصول والخصوم وحقوق الملكية",
+            t("توازن المدين والدائن", "Debit and credit balance"),
+            t("الحسابات المفقودة", "Missing accounts"),
+            t("الحسابات غير المطابقة", "Unmapped accounts"),
+            t("البيانات المكررة", "Duplicate data"),
+            t("صحة الفترة المالية", "Period integrity"),
+            t("سلامة العلاقة بين الأصول والخصوم وحقوق الملكية", "Assets = liabilities + equity"),
           ]}
         />
         <Step
           n="05"
-          title="احصل على الحقيقة المالية"
-          body="يتم إنشاء طبقة مالية موحدة يمكن الاعتماد عليها لبناء:"
-          list={["قائمة الدخل", "الميزانية العمومية", "المؤشرات", "التحليلات", "التوقعات", "الذكاء المالي"]}
+          title={t("احصل على الحقيقة المالية", "Get Financial Truth")}
+          body={t(
+            "يتم إنشاء طبقة مالية موحدة يمكن الاعتماد عليها لبناء:",
+            "A single trusted financial layer is created and used to build:",
+          )}
+          list={[
+            t("قائمة الدخل", "Income statement"),
+            t("الميزانية العمومية", "Balance sheet"),
+            t("المؤشرات", "KPIs"),
+            t("التحليلات", "Analytics"),
+            t("التوقعات", "Forecasts"),
+            t("الذكاء المالي", "Financial intelligence"),
+          ]}
         />
       </div>
-      <span className="sr-only">{t("", "")}</span>
     </Section>
   );
 }
@@ -214,9 +257,9 @@ function Step({
 export function FinancialTruth() {
   const t = useT();
   const branches = [
-    "قائمة الدخل",
-    "الميزانية العمومية",
-    "المؤشرات",
+    t("قائمة الدخل", "Income statement"),
+    t("الميزانية العمومية", "Balance sheet"),
+    t("المؤشرات", "KPIs"),
     "Dashboard",
     "Analytics",
     "AI CFO",
@@ -228,11 +271,13 @@ export function FinancialTruth() {
           Financial Truth
         </span>
         <h2 className="mt-4 text-[28px] leading-[1.35] font-bold sm:text-[36px]">
-          مصدر واحد للحقيقة المالية
+          {t("مصدر واحد للحقيقة المالية", "One source of financial truth")}
         </h2>
         <p className="mt-4 max-w-[70ch] text-[15px] leading-8 opacity-70">
-          بدل أن يعيد كل تقرير أو شاشة حساب الأرقام بطريقته الخاصة، يقوم VCFO ببناء Financial Truth
-          واحدة تعتمد عليها جميع أجزاء النظام.
+          {t(
+            "بدل أن يعيد كل تقرير أو شاشة حساب الأرقام بطريقته الخاصة، يقوم VCFO ببناء Financial Truth واحدة تعتمد عليها جميع أجزاء النظام.",
+            "Instead of every report recalculating numbers its own way, VCFO builds one Financial Truth layer that the entire platform depends on.",
+          )}
         </p>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:items-center">
