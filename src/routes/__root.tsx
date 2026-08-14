@@ -167,7 +167,6 @@ function RootComponent() {
       <QueryClientProvider client={queryClient}>
         <GoogleAnalytics />
         <Analytics />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </QueryClientProvider>
     </LangProvider>
