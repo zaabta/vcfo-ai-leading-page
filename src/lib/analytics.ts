@@ -5,9 +5,7 @@ declare global {
   }
 }
 
-export const GA_MEASUREMENT_ID = (
-  import.meta.env.VITE_GA_MEASUREMENT_ID ?? ""
-).trim();
+export const GA_MEASUREMENT_ID = (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "").trim();
 
 export const isAnalyticsEnabled = /^G-[A-Z0-9]+$/.test(GA_MEASUREMENT_ID);
 
