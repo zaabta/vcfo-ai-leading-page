@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LangProvider } from "@/components/vcfo/lang";
 import { Navbar } from "@/components/vcfo/nav";
 import { Hero, TrustBar } from "@/components/vcfo/hero";
 import { Problem, Solution, HowItWorks, FinancialTruth } from "@/components/vcfo/sections-a";
@@ -21,7 +20,7 @@ const description =
   "VCFO منصة ذكاء مالي للشركات تساعدك على تنظيف البيانات المالية، إنشاء Financial Truth، وتحويل الأرقام إلى مؤشرات وتحليلات واضحة لاتخاذ قرارات أسرع وأذكى.";
 const keywords =
   "VCFO, ذكاء مالي, Financial Intelligence, Financial Truth, تحليل مالي, مؤشرات مالية, قوائم مالية, إدارة الشركات, CFO dashboard, business intelligence, financial reporting, forecasting, data validation";
-const canonicalUrl = "https://www.vcfo-ai.com";
+const canonicalUrl = "https://vcfo-ai.com";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -109,11 +108,11 @@ export const Route = createFileRoute("/")({
       { property: "og:site_name", content: "VCFO" },
       { property: "og:url", content: canonicalUrl },
       { property: "og:locale", content: "ar_SA" },
-      { property: "og:image", content: "https://www.vcfo-ai.com/og-image.svg" },
+      { property: "og:image", content: "https://vcfo-ai.com/og-image.svg" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: "https://www.vcfo-ai.com/og-image.svg" },
+      { name: "twitter:image", content: "https://vcfo-ai.com/og-image.svg" },
       { name: "twitter:site", content: "@VCFO" },
     ],
     links: [
@@ -133,35 +132,33 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <LangProvider>
-      <div className="min-h-screen bg-background">
-        <Navbar />
-        <main>
-          <Hero />
-          <TrustBar />
-          <Problem />
-          <Solution />
-          <HowItWorks />
-          <FinancialTruth />
-          <Statements />
-          <CashFlow />
-          <Analytics />
-          <HealthScore />
-          <MultiCompany />
-          <DataQuality />
-          <ErrorResolution />
-          <Compliance />
-          <AICfo />
-          <AICapabilities />
-          <Scenarios />
-          <Forecast />
-          <Pricing />
-          <Testimonials />
-          <CTA />
-          <FAQ />
-        </main>
-        <Footer />
-      </div>
-    </LangProvider>
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <Hero />
+        <TrustBar />
+        <Problem />
+        <Solution />
+        <HowItWorks />
+        <FinancialTruth />
+        <Statements />
+        <CashFlow />
+        <Analytics />
+        <HealthScore />
+        <MultiCompany />
+        <DataQuality />
+        <ErrorResolution />
+        <Compliance />
+        <AICfo />
+        <AICapabilities />
+        <Scenarios />
+        <Forecast />
+        <Pricing />
+        <Testimonials />
+        <CTA />
+        <FAQ />
+      </main>
+      <Footer />
+    </div>
   );
 }

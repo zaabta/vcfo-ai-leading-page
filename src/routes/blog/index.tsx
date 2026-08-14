@@ -12,9 +12,9 @@ export const Route = createFileRoute("/blog/")({
         content: "مقالات VCFO عن الحقيقة المالية، التدفق النقدي، جودة البيانات، وتقارير الفروع.",
       },
       { property: "og:title", content: "المدونة | VCFO" },
-      { property: "og:url", content: "https://www.vcfo-ai.com/blog" },
+      { property: "og:url", content: "https://vcfo-ai.com/blog" },
     ],
-    links: [{ rel: "canonical", href: "https://www.vcfo-ai.com/blog" }],
+    links: [{ rel: "canonical", href: "https://vcfo-ai.com/blog" }],
   }),
   component: BlogIndex,
 });

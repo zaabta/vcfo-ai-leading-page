@@ -13,9 +13,9 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://www.vcfo-ai.com/about" },
+      { property: "og:url", content: "https://vcfo-ai.com/about" },
     ],
-    links: [{ rel: "canonical", href: "https://www.vcfo-ai.com/about" }],
+    links: [{ rel: "canonical", href: "https://vcfo-ai.com/about" }],
   }),
   component: AboutPage,
 });

@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { GoogleAnalytics } from "@/components/vcfo/analytics";
 import { GA_MEASUREMENT_ID, isAnalyticsEnabled } from "@/lib/analytics";
+import { LangProvider } from "@/components/vcfo/lang";
 
 function NotFoundComponent() {
   return (
@@ -100,6 +101,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "/og-image.svg" },
     ],
     links: [
+      { rel: "canonical", href: "https://vcfo-ai.com" },
+      { rel: "alternate", hrefLang: "ar-SA", href: "https://vcfo-ai.com/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://vcfo-ai.com/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       ...(isAnalyticsEnabled
@@ -158,10 +162,12 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <GoogleAnalytics />
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
+    <LangProvider>
+      <QueryClientProvider client={queryClient}>
+        <GoogleAnalytics />
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </QueryClientProvider>
+    </LangProvider>
   );
 }

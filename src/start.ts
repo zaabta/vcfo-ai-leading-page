@@ -2,6 +2,23 @@ import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/r
 
 import { renderErrorPage } from "./lib/error-page";
 
+// Middleware to redirect www to non-www
+const wwwRedirectMiddleware = createMiddleware().server(async ({ request, next }) => {
+  const url = new URL(request.url);
+  
+  // Redirect www to non-www
+  if (url.hostname.startsWith("www.")) {
+    const newUrl = new URL(request.url);
+    newUrl.hostname = url.hostname.substring(4); // Remove 'www.'
+    return new Response(null, {
+      status: 301,
+      headers: { Location: newUrl.toString() },
+    });
+  }
+  
+  return await next();
+});
+
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
     return await next();
@@ -25,5 +42,5 @@ const csrfMiddleware = createCsrfMiddleware({
 });
 
 export const startInstance = createStart(() => ({
-  requestMiddleware: [errorMiddleware, csrfMiddleware],
+  requestMiddleware: [wwwRedirectMiddleware, errorMiddleware, csrfMiddleware],
 }));

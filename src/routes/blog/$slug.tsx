@@ -18,9 +18,9 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "description", content: post.excerptAr },
         { property: "og:title", content: `${post.titleAr} | VCFO` },
         { property: "og:description", content: post.excerptAr },
-        { property: "og:url", content: `https://www.vcfo-ai.com/blog/${post.slug}` },
+        { property: "og:url", content: `https://vcfo-ai.com/blog/${post.slug}` },
       ],
-      links: [{ rel: "canonical", href: `https://www.vcfo-ai.com/blog/${post.slug}` }],
+      links: [{ rel: "canonical", href: `https://vcfo-ai.com/blog/${post.slug}` }],
     };
   },
   component: BlogPostPage,
