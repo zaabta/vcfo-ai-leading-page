@@ -1,5 +1,6 @@
-import { ArrowLeft, Play, MessageCircle, ShieldCheck, GitBranch, CheckCircle2, Lock, ScrollText } from "lucide-react";
+import { ArrowLeft, Play, ShieldCheck, GitBranch, CheckCircle2, Lock, ScrollText } from "lucide-react";
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import { trackCtaClick } from "@/lib/analytics";
 import { CountUp, useT, useReveal } from "./lang";
 
 function Metric({
@@ -120,8 +121,12 @@ export function DashboardPreview() {
               Insight
             </div>
             <p className="text-[12.5px] leading-6 text-ink">
-              ارتفعت المصروفات التشغيلية بنسبة <span className="num font-semibold">12%</span> مقارنة
-              بالفترة السابقة.
+              {t(
+                "ارتفعت المصروفات التشغيلية بنسبة",
+                "Operating expenses rose by",
+              )}{" "}
+              <span className="num font-semibold">12%</span>{" "}
+              {t("مقارنة بالفترة السابقة.", "versus the previous period.")}
             </p>
           </div>
           <div className="rounded-xl border border-positive/30 bg-positive/8 p-3">
@@ -129,7 +134,8 @@ export function DashboardPreview() {
               Insight
             </div>
             <p className="text-[12.5px] leading-6 text-ink">
-              هامش الربح الإجمالي تحسن من <span className="num font-semibold">31%</span> إلى{" "}
+              {t("هامش الربح الإجمالي تحسن من", "Gross margin improved from")}{" "}
+              <span className="num font-semibold">31%</span> {t("إلى", "to")}{" "}
               <span className="num font-semibold">36%</span>.
             </p>
           </div>
@@ -151,7 +157,6 @@ export function Hero() {
   const t = useT();
   const { ref, visible } = useReveal<HTMLDivElement>();
   const getStartedUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.getStarted);
-  const chatUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.sales);
 
   return (
     <div id="top" className="relative overflow-hidden">
@@ -187,15 +192,15 @@ export function Hero() {
               href={getStartedUrl}
               target="_blank"
               rel="noreferrer noopener"
+              onClick={() => trackCtaClick("start_free", "hero", getStartedUrl)}
               className="inline-flex items-center gap-2 rounded-lg bg-ink px-5 py-3 text-[14px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px"
             >
               {t("ابدأ الآن مجانًا", "Start for free")}
               <ArrowLeft className="h-4 w-4 rtl:rotate-0 ltr:rotate-180" />
             </a>
             <a
-              href={getStartedUrl}
-              target="_blank"
-              rel="noreferrer noopener"
+              href="#how"
+              onClick={() => trackCtaClick("see_how_it_works", "hero", "#how")}
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[14px] font-semibold text-ink transition-colors hover:bg-surface-2"
             >
               <Play className="h-3.5 w-3.5" />
@@ -204,9 +209,10 @@ export function Hero() {
           </div>
 
           <p className="mt-5 text-[12.5px] leading-6 text-muted-foreground">
-            بياناتك المالية <span className="text-hairline">←</span> حقيقة مالية موثوقة{" "}
-            <span className="text-hairline">←</span> تحليل <span className="text-hairline">←</span>{" "}
-            قرارات أفضل
+            {t("بياناتك المالية", "Your financial data")} <span className="text-hairline">←</span>{" "}
+            {t("حقيقة مالية موثوقة", "trusted financial truth")}{" "}
+            <span className="text-hairline">←</span> {t("تحليل", "analysis")}{" "}
+            <span className="text-hairline">←</span> {t("قرارات أفضل", "better decisions")}
           </p>
         </div>
 

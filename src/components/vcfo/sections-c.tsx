@@ -13,11 +13,16 @@ export function DataQuality() {
     <Section>
       <Eyebrow>{t("جودة البيانات", "Data quality")}</Eyebrow>
       <h2 className="mt-4 max-w-[30ch] text-[28px] leading-[1.35] font-bold text-ink sm:text-[36px]">
-        قبل أن نخبرك بما يحدث، نتأكد أن البيانات صحيحة
+        {t(
+          "قبل أن نخبرك بما يحدث، نتأكد أن البيانات صحيحة",
+          "Before we tell you what is happening, we make sure the data is right",
+        )}
       </h2>
       <p className="mt-4 max-w-[68ch] text-[15px] leading-8 text-muted-foreground">
-        VCFO لا يحاول إخفاء المشاكل في البيانات. عندما يجد خطأ، يخبرك أين المشكلة وما الذي يحتاج إلى
-        مراجعة.
+        {t(
+          "VCFO لا يحاول إخفاء المشاكل في البيانات. عندما يجد خطأ، يخبرك أين المشكلة وما الذي يحتاج إلى مراجعة.",
+          "VCFO does not hide data problems. When it finds an issue, it tells you where it is and what needs review.",
+        )}
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2.5">
@@ -34,25 +39,27 @@ export function DataQuality() {
       <div className="card-soft mt-8 overflow-hidden">
         <div className="grid gap-4 p-5 sm:grid-cols-3 sm:p-6">
           <div>
-            <div className="text-[11.5px] text-muted-foreground">الحساب</div>
+            <div className="text-[11.5px] text-muted-foreground">{t("الحساب", "Account")}</div>
             <div className="mt-1.5 text-[14px] font-semibold text-ink">
-              <span className="num">5100</span> — مصروفات تشغيلية
+              <span className="num">5100</span> — {t("مصروفات تشغيلية", "Operating expenses")}
             </div>
           </div>
           <div>
-            <div className="text-[11.5px] text-muted-foreground">الحالة</div>
+            <div className="text-[11.5px] text-muted-foreground">{t("الحالة", "Status")}</div>
             <div className="mt-1.5 text-[14px] font-semibold text-danger">
-              غير موجود في دليل الحسابات
+              {t("غير موجود في دليل الحسابات", "Not found in the chart of accounts")}
             </div>
           </div>
           <div>
-            <div className="text-[11.5px] text-muted-foreground">الإجراء</div>
-            <div className="mt-1.5 text-[14px] font-semibold text-ink">مراجعة المطابقة</div>
+            <div className="text-[11.5px] text-muted-foreground">{t("الإجراء", "Action")}</div>
+            <div className="mt-1.5 text-[14px] font-semibold text-ink">
+              {t("مراجعة المطابقة", "Review mapping")}
+            </div>
           </div>
         </div>
         <div className="border-t border-hairline bg-surface-2/60 px-5 py-3.5 sm:px-6">
           <button className="rounded-lg bg-ink px-4 py-2 text-[13px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px">
-            مراجعة الخطأ
+            {t("مراجعة الخطأ", "Review issue")}
           </button>
         </div>
       </div>
@@ -61,10 +68,10 @@ export function DataQuality() {
 }
 
 const issues = [
-  { n: "01", t: "حساب غير موجود", ref: "1205" },
-  { n: "02", t: "حساب غير مطابق", ref: "5100" },
-  { n: "03", t: "قيمة غير صحيحة", ref: "Row 84" },
-  { n: "04", t: "حساب مكرر", ref: "4100" },
+  { n: "01", ar: "حساب غير موجود", en: "Missing account", ref: "1205" },
+  { n: "02", ar: "حساب غير مطابق", en: "Unmapped account", ref: "5100" },
+  { n: "03", ar: "قيمة غير صحيحة", en: "Invalid value", ref: "Row 84" },
+  { n: "04", ar: "حساب مكرر", en: "Duplicate account", ref: "4100" },
 ];
 
 export function ErrorResolution() {
@@ -73,13 +80,13 @@ export function ErrorResolution() {
     <Section>
       <Eyebrow>{t("معالجة الأخطاء", "Error resolution")}</Eyebrow>
       <h2 className="mt-4 text-[28px] leading-[1.35] font-bold text-ink sm:text-[36px]">
-        الأخطاء واضحة وقابلة للمراجعة
+        {t("الأخطاء واضحة وقابلة للمراجعة", "Issues are visible and reviewable")}
       </h2>
 
       <div className="card-soft mt-10 overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-hairline bg-surface-2/70 px-5 py-3.5">
           <span className="text-[13.5px] font-semibold text-ink">
-            تم اكتشاف <span className="num">4</span> مشاكل في الملف.
+            {t("تم اكتشاف", "Found")} <span className="num">4</span> {t("مشاكل في الملف.", "issues in the file.")}
           </span>
           <span className="num rounded-md border border-danger/30 bg-danger/8 px-2.5 py-1 text-[11px] font-semibold text-danger">
             ✕ FAILED
@@ -89,7 +96,7 @@ export function ErrorResolution() {
           {issues.map((i) => (
             <div key={i.n} className="flex items-center gap-4 px-5 py-4">
               <span className="num text-[12px] font-semibold text-teal">{i.n}</span>
-              <span className="min-w-0 flex-1 truncate text-[14px] text-ink">{i.t}</span>
+              <span className="min-w-0 flex-1 truncate text-[14px] text-ink">{t(i.ar, i.en)}</span>
               <span className="num shrink-0 rounded-md bg-surface-2 px-2 py-1 text-[12px] font-semibold text-ink">
                 {i.ref}
               </span>
@@ -98,13 +105,16 @@ export function ErrorResolution() {
         </div>
         <div className="border-t border-hairline px-5 py-4">
           <button className="rounded-lg bg-ink px-4 py-2 text-[13px] font-semibold text-primary-foreground transition-transform hover:-translate-y-px">
-            مراجعة المشاكل
+            {t("مراجعة المشاكل", "Review issues")}
           </button>
         </div>
       </div>
 
       <p className="mt-5 max-w-[70ch] text-[13.5px] leading-7 text-muted-foreground">
-        يمكنك تعديل الملف وإعادة رفعه، أو معالجة الحالات التي يسمح النظام بمعالجتها من داخل المنصة.
+        {t(
+          "يمكنك تعديل الملف وإعادة رفعه، أو معالجة الحالات التي يسمح النظام بمعالجتها من داخل المنصة.",
+          "You can edit the file and re-upload it, or handle the cases that the system allows you to handle within the platform."
+        )}
       </p>
     </Section>
   );

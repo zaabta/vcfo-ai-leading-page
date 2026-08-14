@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import { trackCtaClick } from "@/lib/analytics";
 import { Section, useT, useLang } from "./lang";
 import { Logo } from "./nav";
 
@@ -15,16 +16,20 @@ export function CTA() {
         <div className="pointer-events-none absolute inset-0 grid-lines opacity-[0.35] [mask-image:radial-gradient(60%_60%_at_50%_50%,#000,transparent)]" />
         <div className="relative mx-auto max-w-[46ch]">
           <h2 className="text-[28px] leading-[1.4] font-bold sm:text-[38px]">
-            ابدأ ببناء الصورة المالية الواضحة لشركتك
+            {t("ابدأ ببناء الصورة المالية الواضحة لشركتك", "Start building a clear financial picture of your company")}
           </h2>
           <p className="mt-5 text-[14.5px] leading-8 opacity-70">
-            ارفع بياناتك المالية، دع VCFO ينظمها ويتحقق منها، ثم ابدأ بفهم أرقام شركتك بطريقة أفضل.
+            {t(
+              "ارفع بياناتك المالية، دع VCFO ينظمها ويتحقق منها، ثم ابدأ بفهم أرقام شركتك بطريقة أفضل.",
+              "Upload your financial data, let VCFO organize and validate it, then start understanding your numbers more clearly.",
+            )}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
               href={getStartedUrl}
               target="_blank"
               rel="noreferrer noopener"
+              onClick={() => trackCtaClick("get_started", "cta", getStartedUrl)}
               className="rounded-lg bg-primary-foreground px-6 py-3 text-[14px] font-semibold text-ink transition-transform hover:-translate-y-px"
             >
               {t("ابدأ الآن", "Get started")}
@@ -33,6 +38,7 @@ export function CTA() {
               href={salesUrl}
               target="_blank"
               rel="noreferrer noopener"
+              onClick={() => trackCtaClick("talk_to_team", "cta", salesUrl)}
               className="rounded-lg border border-white/25 px-6 py-3 text-[14px] font-semibold transition-colors hover:bg-white/[0.06]"
             >
               {t("تحدث مع فريقنا", "Talk to our team")}
@@ -46,44 +52,64 @@ export function CTA() {
 
 const faqs = [
   {
-    q: "ما هو VCFO؟",
-    a: "VCFO منصة ذكاء مالي تحوّل بياناتك المحاسبية إلى قوائم مالية موثوقة ومؤشرات وتحليلات تساعدك على اتخاذ القرار.",
+    qAr: "ما هو VCFO؟",
+    qEn: "What is VCFO?",
+    aAr: "VCFO منصة ذكاء مالي تحوّل بياناتك المحاسبية إلى قوائم مالية موثوقة ومؤشرات وتحليلات تساعدك على اتخاذ القرار.",
+    aEn: "VCFO is a financial intelligence platform that turns accounting data into trusted statements, metrics, and analysis that help you decide.",
   },
   {
-    q: "ما نوع الملفات التي يمكنني رفعها؟",
-    a: "يمكنك رفع Trial Balance أو Chart of Accounts بصيغة Excel أو CSV.",
+    qAr: "ما نوع الملفات التي يمكنني رفعها؟",
+    qEn: "What files can I upload?",
+    aAr: "يمكنك رفع Trial Balance أو Chart of Accounts بصيغة Excel أو CSV.",
+    aEn: "You can upload a Trial Balance or Chart of Accounts as Excel or CSV.",
   },
   {
-    q: "هل أحتاج إلى تغيير نظام المحاسبة الخاص بي؟",
-    a: "لا. VCFO يعمل فوق مخرجات نظامك الحالي دون الحاجة إلى استبداله.",
+    qAr: "هل أحتاج إلى تغيير نظام المحاسبة الخاص بي؟",
+    qEn: "Do I need to replace my accounting system?",
+    aAr: "لا. VCFO يعمل فوق مخرجات نظامك الحالي دون الحاجة إلى استبداله.",
+    aEn: "No. VCFO sits on top of your current system's outputs. You do not need to replace it.",
   },
   {
-    q: "هل يمكنني إدارة أكثر من شركة؟",
-    a: "نعم، يمكنك إدارة عدة شركات مع عزل كامل للبيانات بين كل شركة وأخرى.",
+    qAr: "هل يمكنني إدارة أكثر من شركة؟",
+    qEn: "Can I manage more than one company?",
+    aAr: "نعم، يمكنك إدارة عدة شركات مع عزل كامل للبيانات بين كل شركة وأخرى.",
+    aEn: "Yes. You can manage multiple companies with full data isolation between them.",
   },
   {
-    q: "هل يدعم الفروع؟",
-    a: "نعم، يدعم إدارة الفروع وعرض جميع الفروع ومقارنة الفروع ضمن نفس الشركة.",
+    qAr: "هل يدعم الفروع؟",
+    qEn: "Does it support branches?",
+    aAr: "نعم، يدعم إدارة الفروع وعرض جميع الفروع ومقارنة الفروع ضمن نفس الشركة.",
+    aEn: "Yes. You can manage branches, view all branches, and compare them within the same company.",
   },
   {
-    q: "كيف يتعامل النظام مع الأخطاء في الملفات؟",
-    a: "يعرض النظام قائمة واضحة بالمشاكل مع الحساب أو الصف المتأثر، ويمكنك تعديل الملف وإعادة رفعه أو معالجة الحالات المسموح بها داخل المنصة.",
+    qAr: "كيف يتعامل النظام مع الأخطاء في الملفات؟",
+    qEn: "How does the system handle file errors?",
+    aAr: "يعرض النظام قائمة واضحة بالمشاكل مع الحساب أو الصف المتأثر، ويمكنك تعديل الملف وإعادة رفعه أو معالجة الحالات المسموح بها داخل المنصة.",
+    aEn: "It shows a clear list of issues with the affected account or row. You can fix the file and re-upload it, or resolve allowed cases in-app.",
   },
   {
-    q: "ما هي Financial Truth؟",
-    a: "هي طبقة مالية موحدة يُحسب فيها الرقم مرة واحدة، ثم تعتمد عليها القوائم والمؤشرات والتحليلات في المنصة بالكامل.",
+    qAr: "ما هي Financial Truth؟",
+    qEn: "What is Financial Truth?",
+    aAr: "هي طبقة مالية موحدة يُحسب فيها الرقم مرة واحدة، ثم تعتمد عليها القوائم والمؤشرات والتحليلات في المنصة بالكامل.",
+    aEn: "It is a single financial layer where each number is calculated once, then used by statements, metrics, and analytics across the platform.",
   },
   {
-    q: "هل البيانات المالية آمنة؟",
-    a: "نعم، مع عزل بين المستأجرين، صلاحيات حسب الدور، سجل تدقيق، وتتبع كامل لمصدر البيانات.",
+    qAr: "هل البيانات المالية آمنة؟",
+    qEn: "Is financial data secure?",
+    aAr: "نعم، مع عزل بين المستأجرين، صلاحيات حسب الدور، سجل تدقيق، وتتبع كامل لمصدر البيانات.",
+    aEn: "Yes. Tenant isolation, role-based access, an audit log, and full data lineage are built in.",
   },
   {
-    q: "هل VCFO يستخدم الذكاء الاصطناعي؟",
-    a: "المؤشرات والتقييمات مبنية على قواعد مالية قابلة للتفسير. طبقة الذكاء الاصطناعي التفسيرية قادمة في مرحلة لاحقة.",
+    qAr: "هل VCFO يستخدم الذكاء الاصطناعي؟",
+    qEn: "Does VCFO use AI?",
+    aAr: "المؤشرات والتقييمات مبنية على قواعد مالية قابلة للتفسير. طبقة الذكاء الاصطناعي التفسيرية قادمة في مرحلة لاحقة.",
+    aEn: "Metrics and scores are based on explainable financial rules. The interpretive AI layer is coming later.",
   },
   {
-    q: "هل يمكنني التحدث مع المستشار المالي؟",
-    a: "المستشار المالي الذكي ميزة قادمة قريبًا، وستعتمد إجاباته على Financial Truth الخاصة بشركتك.",
+    qAr: "هل يمكنني التحدث مع المستشار المالي؟",
+    qEn: "Can I talk to the financial advisor?",
+    aAr: "المستشار المالي الذكي ميزة قادمة قريبًا، وستعتمد إجاباته على Financial Truth الخاصة بشركتك.",
+    aEn: "The intelligent financial advisor is coming soon, and its answers will be grounded in your company's Financial Truth.",
   },
 ];
 
@@ -99,12 +125,12 @@ export function FAQ() {
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
-            <div key={f.q}>
+            <div key={f.qEn}>
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
                 className="flex w-full items-center justify-between gap-4 py-5 text-start"
               >
-                <span className="text-[15px] font-semibold text-ink">{f.q}</span>
+                <span className="text-[15px] font-semibold text-ink">{t(f.qAr, f.qEn)}</span>
                 <Plus
                   className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 ${
                     isOpen ? "rotate-45" : ""
@@ -116,7 +142,7 @@ export function FAQ() {
                 style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
               >
                 <div className="min-h-0">
-                  <p className="pb-5 text-[14px] leading-8 text-muted-foreground">{f.a}</p>
+                  <p className="pb-5 text-[14px] leading-8 text-muted-foreground">{t(f.aAr, f.aEn)}</p>
                 </div>
               </div>
             </div>
@@ -128,10 +154,36 @@ export function FAQ() {
 }
 
 const cols = [
-  { title: "المنتج", items: ["Dashboard", "Financial Statements", "Analytics", "AI CFO"] },
-  { title: "الشركة", items: ["من نحن", "تواصل معنا"] },
-  { title: "الموارد", items: ["Documentation", "Help Center", "Blog"] },
-  { title: "قانوني", items: ["Privacy", "Terms"] },
+  {
+    title: "المنتج",
+    enTitle: "Product",
+    items: [
+      { ar: "كيف يعمل", en: "How it works", href: "/#how" },
+      { ar: "القوائم المالية", en: "Statements", href: "/#features" },
+      { ar: "التحليلات", en: "Analytics", href: "/#analytics" },
+      { ar: "المستشار المالي", en: "AI CFO", href: "/#aicfo" },
+      { ar: "الأسعار", en: "Pricing", href: "/#pricing" },
+    ],
+  },
+  {
+    title: "الشركة",
+    enTitle: "Company",
+    items: [
+      { ar: "من نحن", en: "About", href: "/about" },
+      { ar: "تواصل معنا", en: "Contact", href: "/#cta" },
+      { ar: "المدونة", en: "Blog", href: "/blog" },
+      { ar: "الأسئلة الشائعة", en: "FAQ", href: "/#faq" },
+    ],
+  },
+  {
+    title: "قانوني",
+    enTitle: "Legal",
+    items: [
+      { ar: "الخصوصية", en: "Privacy", href: "/privacy" },
+      { ar: "الشروط", en: "Terms", href: "/terms" },
+      { ar: "الأمان", en: "Security", href: "/#compliance" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -143,22 +195,26 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-[34ch] text-[13.5px] leading-7 text-muted-foreground">
-              ذكاء مالي يساعدك على اتخاذ قرارات أفضل.
+              {lang === "en"
+                ? "Financial intelligence that helps you make better decisions."
+                : "ذكاء مالي يساعدك على اتخاذ قرارات أفضل."}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {cols.map((c) => (
               <div key={c.title}>
-                <h3 className="text-[13px] font-semibold text-ink">{c.title}</h3>
+                <h3 className="text-[13px] font-semibold text-ink">
+                  {lang === "en" ? c.enTitle : c.title}
+                </h3>
                 <ul className="mt-3 space-y-2.5">
                   {c.items.map((i) => (
-                    <li key={i}>
+                    <li key={i.href}>
                       <a
-                        href="#top"
+                        href={i.href}
                         className="text-[13px] text-muted-foreground transition-colors hover:text-ink"
                       >
-                        {i}
+                        {lang === "en" ? i.en : i.ar}
                       </a>
                     </li>
                   ))}
