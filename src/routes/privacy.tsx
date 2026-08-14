@@ -12,9 +12,9 @@ export const Route = createFileRoute("/privacy")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://www.vcfo-ai.com/privacy" },
+      { property: "og:url", content: "https://vcfo-ai.com/privacy" },
     ],
-    links: [{ rel: "canonical", href: "https://www.vcfo-ai.com/privacy" }],
+    links: [{ rel: "canonical", href: "https://vcfo-ai.com/privacy" }],
   }),
   component: PrivacyPage,
 });

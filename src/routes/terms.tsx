@@ -12,9 +12,9 @@ export const Route = createFileRoute("/terms")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://www.vcfo-ai.com/terms" },
+      { property: "og:url", content: "https://vcfo-ai.com/terms" },
     ],
-    links: [{ rel: "canonical", href: "https://www.vcfo-ai.com/terms" }],
+    links: [{ rel: "canonical", href: "https://vcfo-ai.com/terms" }],
   }),
   component: TermsPage,
 });

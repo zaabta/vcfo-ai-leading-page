@@ -1,5 +1,5 @@
 export const SALES_WHATSAPP_NUMBER = (
-  import.meta.env.VITE_SALES_WHATSAPP_NUMBER ?? "905354569184"
+  import.meta.env.VITE_SALES_WHATSAPP_NUMBER ?? ""
 ).replace(/\D/g, "");
 
 export const WHATSAPP_MESSAGES = {
