@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://vcfo-ai.com/sitemap.xml
-Host: vcfo-ai.com

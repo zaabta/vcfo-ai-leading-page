@@ -1,0 +1,630 @@
+{
+  "Nav": {
+    "primary": "Primary navigation",
+    "home": "Home",
+    "how": "How it works",
+    "features": "Features",
+    "analytics": "Analytics",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "getStarted": "Get started",
+    "menu": "Menu",
+    "langSwitch": "Switch language"
+  },
+  "Footer": {
+    "tagline": "Financial intelligence that helps you make better decisions.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "how": "How it works",
+    "statements": "Statements",
+    "analytics": "Analytics",
+    "aiCfo": "AI CFO",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "security": "Security",
+    "copyright": "© 2026 VCFO. All rights reserved."
+  },
+  "Breadcrumbs": {
+    "home": "Home",
+    "label": "Breadcrumb"
+  },
+  "Home": {
+    "soon": "Soon",
+    "dashboard": {
+      "month": "March 2026",
+      "revenue": "Revenue",
+      "grossProfit": "Gross Profit",
+      "netProfit": "Net Profit",
+      "cash": "Cash",
+      "opex": "Operating Expenses",
+      "revenueTrend": "Revenue trend",
+      "insightOpex1": "Operating expenses rose by",
+      "insightOpex2": "versus the previous period.",
+      "insightMargin1": "Gross margin improved from",
+      "to": "to"
+    },
+    "hero": {
+      "title1": "Turn your financial data into",
+      "title2": "smarter decisions",
+      "subtitle": "VCFO is a financial intelligence platform that turns your accounting data into trusted financial statements, clear metrics, and analysis that helps you understand your company and decide with confidence.",
+      "startFree": "Start for free",
+      "seeHow": "See how it works",
+      "flow1": "Your financial data",
+      "flow2": "trusted financial truth",
+      "flow3": "analysis",
+      "flow4": "better decisions"
+    },
+    "trust": {
+      "tagline": "Built to create one trusted source of financial truth",
+      "structured": "Structured data",
+      "validation": "Automated validation",
+      "lineage": "Full data lineage",
+      "permissions": "Secure permissions",
+      "audit": "Audit log"
+    },
+    "problem": {
+      "eyebrow": "The problem",
+      "title": "The problem is not a lack of data",
+      "subtitle": "The problem is that financial data is usually scattered, unstructured, and hard to turn into a clear decision."
+    },
+    "problems": {
+      "excel": {
+        "title": "Too many Excel files",
+        "body": "Data is scattered across files and different reports."
+      },
+      "mismatch": {
+        "title": "Mismatched accounts",
+        "body": "Account names and codes differ across systems and branches."
+      },
+      "manual": {
+        "title": "Manual analysis",
+        "body": "Extracting metrics and comparisons takes time and effort."
+      },
+      "unclear": {
+        "title": "Hard to see what is really happening",
+        "body": "The numbers exist, but the story behind them is not clear."
+      }
+    },
+    "solution": {
+      "eyebrow": "The solution",
+      "title": "VCFO builds an intelligence layer on your financial data"
+    },
+    "pipeline": {
+      "upload": "Upload data",
+      "clean": "Clean and unify data",
+      "map": "Map accounts",
+      "validate": "Validate data integrity",
+      "truth": "Financial Truth",
+      "statements": "Financial statements",
+      "analytics": "Analytics and KPIs",
+      "advisor": "AI financial advisor"
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "From an Excel file to a clear financial picture in simple steps",
+      "step1": {
+        "title": "Upload your data",
+        "body": "Upload a Trial Balance or Chart of Accounts."
+      },
+      "step2": {
+        "title": "VCFO organizes the data",
+        "body": "The system cleans and unifies the data automatically."
+      },
+      "step3": {
+        "title": "Account mapping",
+        "body": "Your company accounts are mapped to the correct financial classification.",
+        "cash": "Cash"
+      },
+      "step4": {
+        "title": "Validation",
+        "body": "The system checks:",
+        "balance": "Debit and credit balance",
+        "missing": "Missing accounts",
+        "unmapped": "Unmapped accounts",
+        "duplicates": "Duplicate data",
+        "period": "Period integrity",
+        "equation": "Assets = liabilities + equity"
+      },
+      "step5": {
+        "title": "Get Financial Truth",
+        "body": "A single trusted financial layer is created and used to build:",
+        "income": "Income statement",
+        "balance": "Balance sheet",
+        "kpis": "KPIs",
+        "analytics": "Analytics",
+        "forecasts": "Forecasts",
+        "intelligence": "Financial intelligence"
+      }
+    },
+    "truth": {
+      "title": "One source of financial truth",
+      "subtitle": "Instead of every report recalculating numbers its own way, VCFO builds one Financial Truth layer that the entire platform depends on.",
+      "branch": {
+        "income": "Income statement",
+        "balance": "Balance sheet",
+        "kpis": "KPIs"
+      },
+      "footer": "Calculated once, used everywhere across the platform."
+    },
+    "statements": {
+      "eyebrow": "Financial statements",
+      "title": "See your company's financial position immediately",
+      "income": "Income statement",
+      "revenue": "Revenue",
+      "cogs": "Cost of sales",
+      "grossProfit": "Gross profit",
+      "expenses": "Expenses",
+      "netProfit": "Net profit",
+      "footerSar": "SAR · March 2026",
+      "balanceSheet": "Balance sheet",
+      "assets": "Assets",
+      "currentAssets": "Current assets",
+      "liabilities": "Liabilities",
+      "currentLiabilities": "Current liabilities",
+      "equity": "Equity",
+      "metrics": "Financial metrics",
+      "grossMargin": "Gross margin",
+      "operatingMargin": "Operating margin",
+      "netMargin": "Net margin",
+      "footerTruth": "Calculated from Financial Truth"
+    },
+    "cashflow": {
+      "eyebrow": "Cash flow statement",
+      "title": "See where cash comes from and where it goes.",
+      "subtitle": "Profit is not enough. Cash flow shows how liquidity actually moves inside the company, and whether operations generate cash or consume it.",
+      "operating": {
+        "title": "Cash from operating activities",
+        "body": "See how much cash the core business actually generates."
+      },
+      "investing": {
+        "title": "Cash from investing activities",
+        "body": "Track cash used or generated by investments and asset purchases or sales."
+      },
+      "financing": {
+        "title": "Cash from financing activities",
+        "body": "Understand how loans, capital, and distributions affect liquidity."
+      },
+      "operatingFlow": "Operating cash flow",
+      "investingFlow": "Investing cash flow",
+      "financingFlow": "Financing cash flow",
+      "netChange": "Net change in cash",
+      "netCashFlow": "Net cash flow",
+      "cashIn": "Cash in",
+      "cashOut": "cash out",
+      "note": "Connect profit to liquidity and see whether the business actually generates cash.",
+      "footer": "SAR · calculated from Financial Truth"
+    },
+    "analytics": {
+      "eyebrow": "Analytics",
+      "title": "Don't just know the number. Understand its direction.",
+      "trend": "Revenue & profit trend",
+      "mom": {
+        "title": "Month over month",
+        "body": "Compare performance from one month to the next."
+      },
+      "yoy": {
+        "title": "Year over year",
+        "body": "Compare the period with the same period last year."
+      },
+      "trends": {
+        "title": "Trend analysis",
+        "body": "Revenue, profit, and expense trends."
+      },
+      "expenses": {
+        "title": "Expense analysis",
+        "body": "What is rising, falling, and affecting profitability?"
+      }
+    },
+    "health": {
+      "eyebrow": "Financial health",
+      "title": "How healthy is your company financially?",
+      "scoreLabel": "Financial health",
+      "good": "Good",
+      "profitability": "Profitability",
+      "liquidity": "Liquidity",
+      "growth": "Growth",
+      "expenseEfficiency": "Expense efficiency",
+      "note": "This score is based on explainable financial metrics, not AI guesswork."
+    },
+    "multi": {
+      "eyebrow": "Companies & branches",
+      "title": "All your companies and branches in one place",
+      "levels": {
+        "group": "Group of companies",
+        "company": "Company",
+        "branches": "Branches",
+        "periods": "Financial periods",
+        "data": "Financial data"
+      },
+      "caps": {
+        "companies": "Companies & branches",
+        "manageBranches": "Manage branches",
+        "isolate": "Isolate data between companies",
+        "managePeriods": "Manage financial periods",
+        "comparePeriods": "Compare financial periods",
+        "viewPeriods": "View all financial periods",
+        "compareAllPeriods": "Compare all financial periods",
+        "compareAll": "Compare all companies and branches"
+      }
+    },
+    "quality": {
+      "eyebrow": "Data quality",
+      "title": "Before we tell you what is happening, we make sure the data is right",
+      "subtitle": "VCFO does not hide data problems. When it finds an issue, it tells you where it is and what needs review.",
+      "account": "Account",
+      "opex": "Operating expenses",
+      "status": "Status",
+      "notFound": "Not found in the chart of accounts",
+      "action": "Action",
+      "reviewMapping": "Review mapping",
+      "reviewIssue": "Review issue"
+    },
+    "errors": {
+      "eyebrow": "Error resolution",
+      "title": "Issues are visible and reviewable",
+      "found1": "Found",
+      "found2": "issues in the file.",
+      "missing": "Missing account",
+      "unmapped": "Unmapped account",
+      "invalid": "Invalid value",
+      "duplicate": "Duplicate account",
+      "review": "Review issues",
+      "note": "You can edit the file and re-upload it, or handle the cases that the system allows you to handle within the platform."
+    },
+    "security": {
+      "eyebrow": "Security & governance",
+      "title": "Your financial data needs more than a pretty interface",
+      "subtitle": "Every important action can be traced, and each company's data is isolated from the others.",
+      "auditAction": "re-uploaded the Trial Balance",
+      "auditCompany": "Company: Acme",
+      "auditPeriod": "Period: March 2026",
+      "auditTime": "Time: 10:42 AM"
+    },
+    "aicfo": {
+      "title": "Next, you will not just read the numbers. You will talk to them.",
+      "subtitle": "The VCFO intelligent financial advisor",
+      "month": "March 2026",
+      "question": "Why did net profit drop this month?",
+      "answer1": "Net profit fell by",
+      "answer2": "versus last month, mainly because operating expenses rose by",
+      "answer3": ", while revenue stayed almost flat.",
+      "followUp": "Do you want me to break down the expenses with the biggest impact?",
+      "yesDetails": "Yes, show details",
+      "comparePeriod": "Compare with last period",
+      "footer": "Every answer is grounded in Financial Truth, not guesswork."
+    },
+    "caps": {
+      "eyebrow": "Future capabilities",
+      "title": "From reports to a financial advisor",
+      "analysis": "Analysis",
+      "rootCause": "Root cause",
+      "recommendations": "Recommendations",
+      "scenarios": "Scenarios",
+      "forecasts": "Forecasts",
+      "conversation": "Conversation",
+      "q1": "What is happening?",
+      "q2": "Why is it happening?",
+      "q3": "What can we do?",
+      "q4": "What if?",
+      "q5": "What might happen?",
+      "q6": "Ask your financial data directly.",
+      "rec1": {
+        "title": "Reduce expenses",
+        "body": "Identify activities or line items that can be reduced without hurting core performance.",
+        "impact": "Impact: potential 6–10% reduction in operating cost"
+      },
+      "rec2": {
+        "title": "Improve profitability",
+        "body": "Find opportunities to lift margins or improve revenue mix through financial comparison.",
+        "impact": "Impact: better margin through a healthier revenue mix"
+      },
+      "rec3": {
+        "title": "Strengthen liquidity",
+        "body": "Assess cash movement and see when a financing or operating decision is needed.",
+        "impact": "Impact: better cash management and funding timing"
+      },
+      "priority": {
+        "high": "High priority",
+        "medium": "Medium priority",
+        "low": "Low priority"
+      }
+    },
+    "scenarios": {
+      "title": "Scenarios — what if something changes?",
+      "subtitle": "Move the assumptions and see the expected impact on revenue, profit, and cash before you decide.",
+      "assumptions": "Scenario assumptions",
+      "revenueGrowth": "Revenue growth",
+      "opexChange": "Operating expense change",
+      "cogsChange": "COGS change",
+      "presets": "Ready-made scenarios",
+      "preset1": "Marketing +20%",
+      "preset2": "Cut expenses 10%",
+      "preset3": "Raise prices 5%",
+      "revImpact": "Revenue impact",
+      "expImpact": "Expense impact",
+      "profitImpact": "Net profit impact",
+      "cashImpact": "Cash impact",
+      "comparison": "Comparison: current vs scenario",
+      "revenue": "Revenue",
+      "opex": "Operating expenses",
+      "netProfit": "Net profit",
+      "current": "Current",
+      "scenario": "Scenario",
+      "explanation": "Scenario explanation",
+      "explanationBody": "When this scenario is applied, net profit is expected to reach {projected}, with a positive impact on profitability and liquidity if the current trend of decline or improvement continues."
+    },
+    "forecast": {
+      "title": "Don't look only at the past",
+      "comingSoon": "Forecasting — coming soon"
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "title": "A clear plan for every stage of your company",
+      "subtitle": "Every plan includes data upload, validation, and Financial Truth. No setup fees.",
+      "monthly": "Monthly",
+      "yearly": "Yearly · save 20%",
+      "mostPopular": "Most popular",
+      "custom": "Custom",
+      "perMonth": "month",
+      "billedAnnually": "Billed annually",
+      "unlimited": "Unlimited",
+      "soon": "Soon",
+      "email": "Email",
+      "priority": "Priority",
+      "dedicated": "Dedicated + SLA",
+      "starter": "Starter",
+      "starterDesc": "For one company starting to organize its financial data.",
+      "starterFeatures": [
+        "One company · one branch",
+        "Upload Trial Balance (Excel / CSV)",
+        "Income statement and balance sheet",
+        "Core financial metrics",
+        "Data validation"
+      ],
+      "starterCta": "Get started",
+      "growth": "Growth",
+      "growthDesc": "For multi-branch companies that need deeper analysis.",
+      "growthFeatures": [
+        "Up to 3 companies · unlimited branches",
+        "Cash flow statement",
+        "Analytics and comparisons (MoM · YoY)",
+        "Financial health score",
+        "Branch and all-branch comparison",
+        "Role-based access"
+      ],
+      "growthCta": "Start trial",
+      "enterprise": "Enterprise",
+      "enterpriseDesc": "For groups that need governance and dedicated support.",
+      "enterpriseFeatures": [
+        "Unlimited companies and branches",
+        "Full isolation and audit log",
+        "Forecasts and scenario analysis",
+        "AI financial advisor (soon)",
+        "Dedicated support and SLA"
+      ],
+      "enterpriseCta": "Talk to sales",
+      "comparison": "Feature comparison",
+      "matrix": {
+        "companies": "Companies",
+        "branches": "Branches",
+        "statements": "Financial statements",
+        "cashflow": "Cash flow statement",
+        "analytics": "Analytics and comparisons",
+        "health": "Health score",
+        "forecasts": "Forecasts and scenarios",
+        "audit": "Audit log and permissions",
+        "aiAdvisor": "AI financial advisor",
+        "support": "Support"
+      },
+      "bannerTitle": "Not sure which plan fits?",
+      "bannerBody": "Upload one file and we will show you your company's financial picture before you pay anything.",
+      "startFree": "Start free"
+    },
+    "compliance": {
+      "eyebrow": "Enterprise security & compliance",
+      "title": "Enterprise-grade security for your financial data",
+      "subtitle": "Financial data is among a company's most sensitive assets. VCFO is built with clear controls for protection, encryption, access, and a full audit trail.",
+      "pillars": {
+        "protection": {
+          "title": "Data protection",
+          "body": "Each company's data is fully isolated, with daily backups and a clear recovery plan."
+        },
+        "encryption": {
+          "title": "Encryption",
+          "body": "Data is encrypted in transit and at rest, with managed encryption keys."
+        },
+        "access": {
+          "title": "Access and permissions",
+          "body": "Fine-grained permissions by role, company, and branch, with least privilege and 2FA."
+        },
+        "audit": {
+          "title": "Audit and compliance",
+          "body": "A full audit log for every action, and lineage from every number back to the source file."
+        },
+        "hosting": {
+          "title": "Reliable hosting",
+          "body": "Cloud infrastructure with continuous monitoring and a regional hosting option."
+        },
+        "privacy": {
+          "title": "Privacy",
+          "body": "Your data stays yours. We do not use financial data to train models, and you can delete it anytime."
+        }
+      },
+      "controls": "Access controls inside the platform",
+      "control1": "Two-factor authentication (2FA)",
+      "control2": "Single sign-on (SSO)",
+      "control3": "Role-based permissions",
+      "control4": "Company data isolation",
+      "control5": "Exportable audit log",
+      "control6": "Periodic access reviews",
+      "matrix": "Access matrix",
+      "owner": "Owner",
+      "fullAccess": "Full access",
+      "cfo": "CFO",
+      "uploadApprove": "Upload and approve",
+      "analyst": "Analyst",
+      "analyticsOnly": "Analytics only",
+      "reviewer": "Reviewer",
+      "readAudit": "Read + audit log",
+      "matrixNote": "Every permission change is logged and can be reviewed later."
+    },
+    "testimonials": {
+      "eyebrow": "Testimonials",
+      "title": "Finance teams that rely on VCFO to decide",
+      "q1": "We used to spend a full week preparing monthly statements. Now we upload the trial balance and get the full picture in minutes.",
+      "n1": "Sarah Al-Otaibi",
+      "r1": "Finance director · retail group",
+      "q2": "The biggest change is that everyone now debates the same numbers. No report has a different version of the truth.",
+      "n2": "Khalid Al-Mansour",
+      "r2": "Chief executive",
+      "q3": "Comparing branch performance was the hardest part of our work. Today it is one screen we open at the start of every meeting.",
+      "n3": "Noura Al-Harbi",
+      "r3": "Operations director · 12 branches",
+      "q4": "Data validation saved us from errors that used to appear too late. The system tells you exactly where the problem is.",
+      "n4": "Abdullah Al-Shammari",
+      "r4": "Certified accountant",
+      "q5": "The cash flow statement changed how we plan liquidity. We now know earlier when we will need funding.",
+      "n5": "Reem Al-Qahtani",
+      "r5": "Tech founder"
+    },
+    "cta": {
+      "title": "Start building a clear financial picture of your company",
+      "subtitle": "Upload your financial data, let VCFO organize and validate it, then start understanding your numbers more clearly.",
+      "getStarted": "Get started",
+      "talkToTeam": "Talk to our team"
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": "What is VCFO?",
+      "a1": "VCFO is a financial intelligence platform that turns accounting data into trusted statements, metrics, and analysis that help you decide.",
+      "q2": "What files can I upload?",
+      "a2": "You can upload a Trial Balance or Chart of Accounts as Excel or CSV.",
+      "q3": "Do I need to replace my accounting system?",
+      "a3": "No. VCFO sits on top of your current system's outputs. You do not need to replace it.",
+      "q4": "Can I manage more than one company?",
+      "a4": "Yes. You can manage multiple companies with full data isolation between them.",
+      "q5": "Does it support branches?",
+      "a5": "Yes. You can manage branches, view all branches, and compare them within the same company.",
+      "q6": "How does the system handle file errors?",
+      "a6": "It shows a clear list of issues with the affected account or row. You can fix the file and re-upload it, or resolve allowed cases in-app.",
+      "q7": "What is Financial Truth?",
+      "a7": "It is a single financial layer where each number is calculated once, then used by statements, metrics, and analytics across the platform.",
+      "q8": "Is financial data secure?",
+      "a8": "Yes. Tenant isolation, role-based access, an audit log, and full data lineage are built in.",
+      "q9": "Does VCFO use AI?",
+      "a9": "Metrics and scores are based on explainable financial rules. The interpretive AI layer is coming later.",
+      "q10": "Can I talk to the financial advisor?",
+      "a10": "The intelligent financial advisor is coming soon, and its answers will be grounded in your company's Financial Truth."
+    }
+  },
+  "Meta": {
+    "home": {
+      "title": "VCFO | Financial Intelligence Platform",
+      "description": "VCFO is a financial intelligence platform that helps you clean your financial data, build Financial Truth, and turn numbers into clear metrics and analysis for faster, smarter decisions.",
+      "keywords": "VCFO, Financial Intelligence, Financial Truth, financial analysis, financial metrics, financial statements, business intelligence, financial reporting, forecasting, data validation"
+    },
+    "about": {
+      "title": "About | VCFO",
+      "description": "VCFO is a financial intelligence platform that builds one Financial Truth for companies and turns accounting data into statements, metrics, and analysis you can rely on."
+    },
+    "privacy": {
+      "title": "Privacy policy | VCFO",
+      "description": "How VCFO collects, processes, and protects data on the marketing site and the platform."
+    },
+    "terms": {
+      "title": "Terms of use | VCFO",
+      "description": "Terms of use for the VCFO marketing site and platform."
+    },
+    "blog": {
+      "title": "Blog | VCFO",
+      "description": "VCFO articles on financial truth, cash flow, data quality, and branch reporting."
+    },
+    "blogPost": {
+      "title": "{title} | VCFO"
+    }
+  },
+  "About": {
+    "eyebrow": "Company",
+    "title": "We build one source of financial truth",
+    "intro": "VCFO is a financial intelligence platform for companies. We do not replace your accounting system. We sit on top of your data: clean it, unify it, validate it, then turn it into statements, metrics, and analysis leadership can trust.",
+    "values": {
+      "truth": {
+        "title": "Truth first",
+        "body": "Each number is calculated once inside Financial Truth, then reused across every screen and report."
+      },
+      "clarity": {
+        "title": "Clarity over guesswork",
+        "body": "Metrics are built on explainable financial rules, not opaque AI answers."
+      },
+      "built": {
+        "title": "Built for companies",
+        "body": "Multi-company, branches, periods, permissions, and an audit trail from day one."
+      }
+    }
+  },
+  "Privacy": {
+    "eyebrow": "Legal",
+    "title": "Privacy policy",
+    "updated": "Last updated: 13 August 2026",
+    "collect": {
+      "title": "What we collect",
+      "body": "On the marketing site we may collect limited technical data such as approximate IP address, browser type, pages visited, and CTA clicks. If you contact us on WhatsApp, that conversation is also processed under WhatsApp's policies."
+    },
+    "analytics": {
+      "title": "Analytics",
+      "body": "We use Google Analytics 4 to understand and improve site usage. IP anonymization is enabled, and we never use your financial data to train models. You can block tracking via browser settings or privacy extensions."
+    },
+    "product": {
+      "title": "Product data",
+      "body": "If you become a customer, your financial data remains yours. Each company is isolated, data is encrypted in transit and at rest, and we do not sell it or use it to train AI models."
+    },
+    "rights": {
+      "title": "Your rights",
+      "body": "You can request access, correction, or deletion of your data. Contact the VCFO team on WhatsApp or via the contact section."
+    }
+  },
+  "Terms": {
+    "eyebrow": "Legal",
+    "title": "Terms of use",
+    "updated": "Last updated: 13 August 2026",
+    "acceptance": {
+      "title": "Acceptance",
+      "body": "By using vcfo-ai.com or requesting access to the product, you agree to these terms. If you use the service on behalf of a company, you confirm you have authority to bind that company."
+    },
+    "nature": {
+      "title": "Nature of the service",
+      "body": "VCFO is a financial intelligence tool that helps organize data and produce statements and metrics. It is not binding accounting, tax, or legal advice and does not replace a licensed accountant or auditor."
+    },
+    "account": {
+      "title": "Your account",
+      "body": "You are responsible for the accuracy of files you upload, for managing your team's permissions, and for keeping login credentials secure."
+    },
+    "pricing": {
+      "title": "Pricing and cancellation",
+      "body": "Listed prices may change. Billing and cancellation details are set in your subscription agreement or quote."
+    }
+  },
+  "Blog": {
+    "eyebrow": "Blog",
+    "title": "Practical notes on financial intelligence",
+    "intro": "Short essays on Financial Truth, cash flow, data quality, and how to read your company's numbers more clearly.",
+    "minutes": "min",
+    "readArticle": "Read article →",
+    "back": "← All articles",
+    "minRead": "min read",
+    "moreArticles": "More articles"
+  },
+  "NotFound": {
+    "title": "404",
+    "subtitle": "Page not found",
+    "body": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}

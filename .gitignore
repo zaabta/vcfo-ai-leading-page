@@ -8,18 +8,20 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
-.output
-.vinxi
-.tanstack/**
-.nitro
-*.local
-.env
 
-# Wrangler / Cloudflare
-.wrangler/
-.dev.vars
+# Next.js
+.next
+out
+build
+dist
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Env / secrets — never commit
+.env
+.env*.local
+*.local
 
 # Editor directories and files
 .vscode/*
@@ -29,5 +31,4 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
 *.sw?
