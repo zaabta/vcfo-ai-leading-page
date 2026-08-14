@@ -11,19 +11,100 @@ export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("ar");
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("vcfo-lang");
-    if (saved === "ar" || saved === "en") setLangState(saved);
+    // Check URL query parameter first
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get("lang");
+    
+    if (queryLang === "ar" || queryLang === "en") {
+      setLangState(queryLang);
+      window.localStorage.setItem("vcfo-lang", queryLang);
+      
+      // Remove lang parameter from URL if it's the default (Arabic)
+      if (queryLang === "ar") {
+        params.delete("lang");
+        const newUrl = params.toString() 
+          ? `${window.location.pathname}?${params.toString()}`
+          : window.location.pathname;
+        window.history.replaceState(null, "", newUrl);
+      }
+    } else {
+      // Fall back to localStorage
+      const saved = window.localStorage.getItem("vcfo-lang");
+      if (saved === "ar" || saved === "en") {
+        setLangState(saved);
+      } else {
+        // Default to Arabic
+        setLangState("ar");
+        window.localStorage.setItem("vcfo-lang", "ar");
+      }
+      
+      // Clean up URL if it has lang parameter
+      if (params.has("lang")) {
+        params.delete("lang");
+        const newUrl = params.toString() 
+          ? `${window.location.pathname}?${params.toString()}`
+          : window.location.pathname;
+        window.history.replaceState(null, "", newUrl);
+      }
+    }
   }, []);
 
   const setLang = useCallback((next: Lang) => {
     setLangState(next);
     window.localStorage.setItem("vcfo-lang", next);
+    
+    // Update URL query parameter
+    const params = new URLSearchParams(window.location.search);
+    
+    // Remove lang parameter if it's the default (Arabic)
+    if (next === "ar") {
+      params.delete("lang");
+    } else {
+      params.set("lang", next);
+    }
+    
+    const newUrl = params.toString() 
+      ? `${window.location.pathname}?${params.toString()}`
+      : window.location.pathname;
+    window.history.replaceState(null, "", newUrl);
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
+
+  // Handle hash navigation - remove lang param when navigating to anchors
+  useEffect(() => {
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest("a[href^='#']");
+      
+      if (link) {
+        const href = link.getAttribute("href");
+        if (href?.startsWith("#")) {
+          e.preventDefault();
+          
+          // Navigate to hash without lang parameter
+          const params = new URLSearchParams(window.location.search);
+          params.delete("lang");
+          
+          const newUrl = params.toString() 
+            ? `${window.location.pathname}?${params.toString()}${href}`
+            : `${window.location.pathname}${href}`;
+          
+          window.history.pushState(null, "", newUrl);
+          
+          // Scroll to the element
+          const element = document.querySelector(href);
+          element?.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+    return () => document.removeEventListener("click", handleAnchorClick);
+  }, []);
 
   const value = useMemo(() => ({ lang, setLang }), [lang, setLang]);
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
